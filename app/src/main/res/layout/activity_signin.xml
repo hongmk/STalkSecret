@@ -8,90 +8,122 @@
     android:weightSum="6"
     tools:context="com.hongmk.stalksecret.SigninActivity">
 
-    <!--로그인, ID입력, 로그인버튼-->
+    <!--ID입력, pw입력, 로그인버튼-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:weightSum="3"
+        android:weightSum="4"
         android:orientation="vertical">
 
+        <!--ID입력-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.9">
+            android:layout_weight="1"
+            android:layout_marginTop="90dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="ID"
+                android:text="아이디"
                 android:gravity="center"
                 android:textSize="20dp"
                 android:textStyle="italic"/>
 
         </LinearLayout>
 
+        <!--빈텍스트-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"/>
+
+        <!--pw입력-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.9">
+            android:layout_weight="1">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="PW"
+                android:text="비밀번호"
                 android:gravity="center"
                 android:textSize="20dp"
                 android:textStyle="italic"/>
         </LinearLayout>
 
-        <Button
+        <!--빈텍스트-->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.9"
-            android:text="LOGIN"
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:layout_weight="0.3"/>
+
+        <!--체크박스, 자동로그인, 회원가입버튼-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:layout_marginRight="18dp"
+                android:layout_marginLeft="38dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="자동로그인"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="회원가입"
+                android:textSize="15dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-    <!--체크박스, 자동로그인, 회원가입버튼-->
-    <LinearLayout
+    <!--빈텍스트-->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_weight="0.2"/>
 
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            />
+    <!--로그인 버튼-->
+    <Button android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="로그인"
+        android:gravity="center"
+        style="@style/ButtonCommon"
+        android:textColor="@color/white"
+        android:background="@color/darkblue"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.3"
-            android:text="자동로그인"
-            android:textSize="20dp"
-            android:gravity="center"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:text="회원가입"
-            android:textSize="20dp"
-            android:gravity="center"/>
-
-    </LinearLayout>
+    <!--빈텍스트-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
 
     <!--네이버, 구글 연동로그인-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -100,17 +132,30 @@
             android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:text="N|로그인"
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            style="@style/ButtonCommon"
+            android:textColor="@color/white"
+            android:background="@color/darkgreen"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:text="G|로그인"
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            style="@style/ButtonCommon"
+            android:textColor="@color/white"
+            android:background="@color/darkred"/>
 
     </LinearLayout>
 
+    <!--빈텍스트-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"/>
 </LinearLayout>
