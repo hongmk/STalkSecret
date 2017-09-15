@@ -16,6 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SigninActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".CreateBoardActivity" />
+        <activity android:name=".ViewBoardActivity" />
+        <activity android:name=".EditBoardActivity" />
+        <activity android:name=".NoticeActivity" />
+        <activity android:name=".MypageActivity" />
+        <activity android:name=".EditNicnameActivity" />
+        <activity android:name=".EditPasswordActivity" />
+        <activity android:name=".MyContentsActivity" />
+        <activity android:name=".MyCommentsActivity" />
+        <activity android:name=".KeywordsActivity" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>
