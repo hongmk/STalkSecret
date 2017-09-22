@@ -28,8 +28,8 @@
 
             <ImageView
                 android:id="@+id/mainIcon"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/main_icon" />
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.1"
             android:gravity="center"
             android:textColor="#fffff9"
             android:textSize="22sp" />

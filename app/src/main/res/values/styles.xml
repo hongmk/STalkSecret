@@ -11,15 +11,23 @@
     <style name="MainSloganText">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/darkblue</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">serif-monospace</item>
     </style>
 
     <!--버튼 공통스타일-->
-    <style name="ButtonCommon">
+    <style name="ButtonCommon" parent="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MoveButtonCommon">
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/darkblue</item>
+
+    </style>
 
 </resources>

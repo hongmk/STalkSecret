@@ -24,12 +24,19 @@
         <activity android:name=".CreateBoardActivity" />
         <activity android:name=".ViewBoardActivity" />
         <activity android:name=".EditBoardActivity" />
-        <activity android:name=".NoticeActivity" />
+        <activity android:name=".NoticeActivity">
+
+        </activity>
         <activity android:name=".MypageActivity" />
         <activity android:name=".EditNicnameActivity" />
         <activity android:name=".EditPasswordActivity" />
-        <activity android:name=".MyContentsActivity" />
-        <activity android:name=".MyCommentsActivity" />
+        <activity android:name=".MyContentsActivity">
+
+        </activity>
+
+        <activity android:name=".MyCommentsActivity" >
+
+        </activity>
         <activity android:name=".KeywordsActivity" />
         <activity android:name=".SettingActivity"></activity>
     </application>

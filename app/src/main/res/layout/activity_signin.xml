@@ -111,7 +111,8 @@
         android:gravity="center"
         style="@style/ButtonCommon"
         android:textColor="@color/white"
-        android:background="@color/darkblue"/>
+        android:background="@color/darkblue"
+        android:onClick="onLogin"/>
 
     <!--빈텍스트-->
     <TextView
