@@ -34,4 +34,9 @@ public class MypageActivity extends AppCompatActivity {
         intent = new Intent(MypageActivity.this, MyCommentsActivity.class);
         startActivity(intent);
     }
+
+    public void onSetting (View view){
+        intent = new Intent(MypageActivity.this, SettingActivity.class);
+        startActivity(intent);
+    }
 }

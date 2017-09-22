@@ -175,11 +175,13 @@
 
 
         <Button
+            android:id="@+id/settingBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             style="@style/MoveButtonCommon"
-            android:text="설정"/>
+            android:text="설정"
+            android:onClick="onSetting"/>
 
         <TextView
             android:layout_width="0dp"
