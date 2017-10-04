@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">STalkSecret</string>
+    <string name="app_name">STalk Secret</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- hints -->
+    <string name="id_hint">ID</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+
+    <string name="forgot">ID/PW 찾기</string>
+    <string name="sign_in">로그인</string>
+    <string name="sign_up_button">회원가입</string>
+    <string name="config_data">config</string>
+
+    <string name="network_error">Something went wrong. Please check Network Connection.</string>
+    <string name="username_error">Please enter your username</string>
+    <string name="email_error">Please enter your email</string>
+    <string name="password_error">Please choose a password</string>
+    <string name="no_email_error">You need an email to sign up</string>
+    <string name="invalid_email_error">Please enter a valid email</string>
+
+    <string name="loading_holder">Please wait…</string>
+    <string name="logging_holder">Logging in…</string>
+    <string name="getting_data">Getting User Info…</string>
+    <string name="password_mismatch">Make sure your passwords match</string>
+    <string name="login_failed">Login failed! Try again!</string>
+
+    <string name="user_exists">User already logged in</string>
+    <string name="logout_text">Sign out</string>
+
 </resources>

@@ -1,162 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:weightSum="6"
-    tools:context="com.hongmk.stalksecret.SigninActivity">
+    android:theme="@style/LoginTheme">
 
-    <!--ID입력, pw입력, 로그인버튼-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:weightSum="4"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <!--ID입력-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="90dp">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="아이디"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:textStyle="italic"/>
-
-        </LinearLayout>
-
-        <!--빈텍스트-->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"/>
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:padding="32dp"
+            android:text="@string/app_name"
+            android:textColor="@color/iron"
+            android:textSize="35sp" />
+    </LinearLayout>
 
-        <!--pw입력-->
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:layout_margin="16dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="8dp">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="비밀번호"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:textStyle="italic"/>
-        </LinearLayout>
-
-        <!--빈텍스트-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"/>
-
-        <!--체크박스, 자동로그인, 회원가입버튼-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:layout_marginRight="18dp"
-                android:layout_marginLeft="38dp"/>
-
+            <!--빈 텍스트-->
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:text="자동로그인"
-                android:textSize="18dp"
-                android:gravity="center_vertical"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:text="회원가입"
-                android:textSize="15dp"
-                android:gravity="center"/>
+            <!--ID-->
+            <EditText
+                android:id="@+id/id_editTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/id_hint"/>
+
+            <!--PW-->
+            <EditText
+                android:id="@+id/pw_editTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" />
+
+            <!--빈 텍스트-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+            <!--로그인/회원가입 버튼-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/signIn_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:tag="custom_login_button"
+                    android:text="@string/sign_in"
+                    android:onClick="onLogin"/>
+
+                <Button
+                    android:id="@+id/signUp_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:tag="custom_signup_button"
+                    android:text="@string/sign_up_button" />
+
+            </LinearLayout>
+
+            <!--빈 텍스트-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp" />
+
+            <!--ID/PW 분실 시-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/forgot_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/iron"
+                    android:tag="custom_login_button"
+                    android:background="@color/transparent"
+                    android:text="@string/forgot" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+    </android.support.v7.widget.CardView>
 
-    </LinearLayout>
 
-    <!--빈텍스트-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"/>
-
-    <!--로그인 버튼-->
-    <Button android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="로그인"
-        android:gravity="center"
-        style="@style/ButtonCommon"
-        android:textColor="@color/white"
-        android:background="@color/darkblue"
-        android:onClick="onLogin"/>
-
-    <!--빈텍스트-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"/>
-
-    <!--네이버, 구글 연동로그인-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:text="N|로그인"
-            android:gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="20dp"
-            style="@style/ButtonCommon"
-            android:textColor="@color/white"
-            android:background="@color/darkgreen"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:text="G|로그인"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            style="@style/ButtonCommon"
-            android:textColor="@color/white"
-            android:background="@color/darkred"/>
-
-    </LinearLayout>
-
-    <!--빈텍스트-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"/>
 </LinearLayout>

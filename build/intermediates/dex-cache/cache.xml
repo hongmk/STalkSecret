@@ -16,8 +16,17 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="63298199606c7b11ee11f6efcc61f29d9a5cacfa">
+        sha1="6c1d0b60ca81437bbda2427b97ded48929ec3b0f">
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f78ba903759e64f6b0dd2101802d35b38cc6b442\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\HongMK\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.1\2a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0\gson-2.8.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
+        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.1_f128f7e2c1a6f7892c02a46196894e311b6490dd\classes.dex" />
     </item>
 
 </items>

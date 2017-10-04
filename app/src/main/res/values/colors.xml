@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="blue" type="color">#FF33B5E5</item>
-    <item name="purple" type="color">#FFAA66CC</item>
-    <item name="green" type="color">#FF99CC00</item>
-    <item name="orange" type="color">#FFFFBB33</item>
-    <item name="red" type="color">#FFFF4444</item>
-    <item name="darkblue" type="color">#062c6a</item>
-    <item name="darkpurple" type="color">#FF9933CC</item>
-    <item name="darkgreen" type="color">#1ec545</item>
-    <item name="darkorange" type="color">#FFFF8800</item>
-    <item name="darkred" type="color">#d60e1b</item>
-    <item name="white" type="color">#FFFFFFFF</item>
-    <item name="black" type="color">#00000000</item>
-    <item name="transparent" type="color">#00ff0000</item>
+    <color name="blue" type="color">#FF33B5E5</color>
+    <color name="purple" type="color">#FFAA66CC</color>
+    <color name="green" type="color">#FF99CC00</color>
+    <color name="orange" type="color">#FFFFBB33</color>
+    <color name="red" type="color">#FFFF4444</color>
+    <color name="darkblue" type="color">#062c6a</color>
+    <color name="darkpurple" type="color">#FF9933CC</color>
+    <color name="darkgreen" type="color">#1ec545</color>
+    <color name="darkorange" type="color">#FFFF8800</color>
+    <color name="darkred" type="color">#d60e1b</color>
+    <color name="white" type="color">#FFFFFFFF</color>
+    <color name="black" type="color">#00000000</color>
+    <color name="transparent" type="color">#00ff0000</color>
 
-    <integer-array name="androidcolors">
-        <item>@color/blue</item>
-        <item>@color/purple</item>
-        <item>@color/green</item>
-        <item>@color/orange</item>
-        <item>@color/red</item>
-        <item>@color/darkblue</item>
-        <item>@color/darkpurple</item>
-        <item>@color/darkgreen</item>
-        <item>@color/darkorange</item>
-        <item>@color/darkred</item>
-        <item>@color/white</item>
-        <item>@color/black</item>
-    </integer-array>
+    <color name="primary_color">#3F51B5</color>
+    <color name="dark_primary_color">#303F9F</color>
+    <color name="accent_color">#FF5722</color>
+    <color name="card_background">#efefef</color>
+    <color name="facebook_brand_color">#3B5998</color>
+    <color name="google_plus_brand_color">#dc4e41</color>
+    <color name="login_primary">#009688</color> <!-- 500 -->
+    <color name="login_primary_dark">#00796B</color> <!-- 700 -->
+    <color name="login_primary_darker">#00695C</color> <!-- 800 -->
+    <color name="login_accent">#FFFFFF</color>
+    <color name="iron">#CCCCCC</color>
+
 </resources>
