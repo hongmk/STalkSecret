@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".SigninActivity"
@@ -26,9 +22,17 @@
 
         <activity android:name=".SignupActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".CreateBoardActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:name=".CreateBoardActivity"/>
         <activity android:name=".ViewBoardActivity" />
-        <activity android:name=".EditBoardActivity" />
+
+        <activity android:name=".EditBoardActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".NoticeActivity">
 
         </activity>
@@ -42,8 +46,6 @@
         <activity android:name=".MyCommentsActivity" >
 
         </activity>
-        <activity android:name=".KeywordsActivity" />
-        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>

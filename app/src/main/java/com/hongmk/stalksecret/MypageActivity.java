@@ -41,11 +41,6 @@ public class MypageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onSetting (View view){
-        intent = new Intent(MypageActivity.this, SettingActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
