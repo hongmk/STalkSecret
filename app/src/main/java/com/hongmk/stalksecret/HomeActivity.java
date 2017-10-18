@@ -24,4 +24,9 @@ public class HomeActivity extends AppCompatActivity {
         intent = new Intent(HomeActivity.this, NoticeActivity.class);
         startActivity(intent);
     }
+
+    public void makeContent(View view) {
+        intent = new Intent(HomeActivity.this, CreateBoardActivity.class);
+        startActivity(intent);
+    }
 }

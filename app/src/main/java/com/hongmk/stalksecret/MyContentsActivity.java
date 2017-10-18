@@ -6,7 +6,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -51,10 +53,17 @@ public class MyContentsActivity extends AppCompatActivity {
         }
     }
     ItemAdapter itemAdpater = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_contents);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_contents_toolbar);
+        toolbar.setTitle("내글 관리"); //툴바 제목 표시여부
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         listView = (ListView)findViewById(R.id.listView);
         itemList.add(new Item("Title01", "Text0101"));
         itemList.add(new Item("Title02", "Text0102"));
@@ -64,5 +73,13 @@ public class MyContentsActivity extends AppCompatActivity {
         itemAdpater = new ItemAdapter(MyContentsActivity.this, R.layout.my_contents_item,
                 itemList);
         listView.setAdapter(itemAdpater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

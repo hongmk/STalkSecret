@@ -6,7 +6,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -55,6 +57,11 @@ public class MyCommentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_comments);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_comments_toolbar);
+        toolbar.setTitle("내댓글 관리"); //툴바 제목 표시여부
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         listView = (ListView)findViewById(R.id.cmListView);
         itemList.add(new Item("cmTitle01", "cmText0101"));
         itemList.add(new Item("cmTitle02", "cmText0102"));
@@ -65,5 +72,12 @@ public class MyCommentsActivity extends AppCompatActivity {
         listView.setAdapter(itemAdpater);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
