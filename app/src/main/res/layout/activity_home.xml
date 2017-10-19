@@ -9,22 +9,28 @@
     android:weightSum="6">
 
     <!--게시판 명-->
-    <TextView
-        android:id="@+id/hmTitle"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="금융개발부"
-        android:gravity="center"
-        android:textSize="25dp"/>
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/darkblue"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <!--게시글표시-->
-    <ListView
-        android:id="@+id/hmListView"
+    <WebView
+        android:id="@+id/home_webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
-    </ListView>
+        android:layout_weight="5.5">
+
+    </WebView>
 
     <LinearLayout
         android:layout_width="match_parent"
