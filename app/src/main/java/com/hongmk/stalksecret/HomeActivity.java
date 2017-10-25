@@ -1,8 +1,11 @@
 package com.hongmk.stalksecret;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -38,6 +41,8 @@ public class HomeActivity extends AppCompatActivity {
     //FragmentPagerItemAdapter 사용 시 첫 생성 할 때 Tab1, Tab2에 모두 position 0으로 생성하므로 FragmentStatePagerItemAdapter 사용함.
     private FragmentStatePagerItemAdapter adapter;
 
+    SwipeRefreshLayout homeSwipe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,33 +51,70 @@ public class HomeActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         //toolbar.setTitle(R.string.demo_title_indicator_trick1); //툴바 제목 표시여부
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //왼쪽상단 BackKey 표시여부
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
+        viewPager = (ViewPager) findViewById(R.id.home_viewpager);
+        viewPagerTab = (SmartTabLayout) findViewById(R.id.home_viewpagertab);
 
         pages = new FragmentPagerItems(this);
 
         for (int titleResId : tab10()) {
             //pages.add(FragmentPagerItem.of(getString(titleResId), DemoFragment.class));
             pages.add(FragmentPagerItem.of(getString(titleResId), HomeListFragment.class));
-            Log.i("[SH]", "CREATE POSITION:"+ titleResId);
         }
 
         adapter = new FragmentStatePagerItemAdapter(getSupportFragmentManager(), pages);
 
         viewPager.setAdapter(adapter);
         viewPagerTab.setViewPager(viewPager);
+
+        //viewPager에 선택, 스크롤 등 변화가 있을 때 리스너 호출됨
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+        {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position)
+            {
+                //최종선택된 위치를 pref변수에 항상 저장
+                SharedPreferences lastTab = getSharedPreferences("LastTab", MODE_PRIVATE);
+                SharedPreferences.Editor editor = lastTab.edit();
+                editor.putInt("position", position);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
+
+        //저장된 마지막 위치를 가져와서 해당 탭이 처음보일 수 있도록함.
+        SharedPreferences pref = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
+        int lastTabPosition = pref.getInt("position", 0);
+        viewPager.setCurrentItem(lastTabPosition);
+
+        //리스트를 아래로 당겨 Refresh하면 Activity를 재생성하는 방식으로 진행
+        homeSwipe = (SwipeRefreshLayout) findViewById(R.id.home_swipe);
+        homeSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i("[SH]", "refresh!!");
+                onResume(1);
+                homeSwipe.setRefreshing(false);
+            }
+        });
     }
 
+    //메뉴에 보일 레이아웃을 설정
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    //메뉴 아이템이 클릭되면 호출됨
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home_menu_mypage) {
@@ -85,9 +127,22 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //글작성 버튼 클릭 시 동작
     public void createContentClick(View view){
         intent = new Intent(HomeActivity.this, CreateBoardActivity.class);
         startActivity(intent);
     }
+
+    //@Override
+    protected void onResume(int resumeType){
+        if(resumeType == 1) {
+            Intent refresh = new Intent(this, HomeActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
+    }
+
+
+
 
 }

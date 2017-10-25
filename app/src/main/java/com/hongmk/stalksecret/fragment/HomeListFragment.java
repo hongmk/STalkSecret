@@ -2,6 +2,7 @@ package com.hongmk.stalksecret.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,11 +17,11 @@ import java.util.ArrayList;
 
 public class HomeListFragment extends Fragment {
 
+    private SwipeRefreshLayout homeSwipe;
     private RecyclerView recyclerView;
     private HomeRecyclerAdapter adapter;
     private ArrayList<HomeListItem> list = new ArrayList<HomeListItem>();
     private static int previousSize =0;
-    int position;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class HomeListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext())); //세로로 스크롤 할 것이므로 LinearLayoutManager를 택함
 
         return rootView;
+
+    }
+
+    public void onRefresh(int position){
 
     }
 
