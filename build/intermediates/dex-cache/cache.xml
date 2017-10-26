@@ -11,6 +11,15 @@
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ffc99d4c322af1cb2dbac8c7572c5db8b9bcfa06\classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="C:\Users\HongMK\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.1\2a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0\gson-2.8.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
+        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\pre-dexed\debug\gson-2.8.1_f128f7e2c1a6f7892c02a46196894e311b6490dd.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="D:\Projects\STalkSecret\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
@@ -18,15 +27,6 @@
         revision="26.0.1"
         sha1="61aa527fae3f2b658fa800d8b792062cb91153b1">
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f78ba903759e64f6b0dd2101802d35b38cc6b442\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\HongMK\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.1\2a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0\gson-2.8.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
-        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.8.1_f128f7e2c1a6f7892c02a46196894e311b6490dd\classes.dex" />
     </item>
 
 </items>

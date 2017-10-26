@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.hongmk.stalksecret.fragment.HomeListFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -73,7 +75,9 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
 
             @Override
             public void onPageSelected(int position)
@@ -88,6 +92,21 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {}
+        });
+
+        /*SwipeRefresh 와 ViewPager의 스크롤이 겹쳐서 오른쪽으로 이동할때도 Refresh가 됨.
+        * 해당현상을 막기위해 아래로 스크롤(ACTION_UP)일 때만 SwipeRefreshLayout을 활성화함.
+        */
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() != MotionEvent.ACTION_UP) {
+                    homeSwipe.setEnabled(false);
+                } else {
+                    homeSwipe.setEnabled(true);
+                }
+                return false;
+            }
         });
 
         //저장된 마지막 위치를 가져와서 해당 탭이 처음보일 수 있도록함.
@@ -142,7 +161,12 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
+    public void getContent(View view){
+        //버튼이 생성될때 글의 row_id를 tag로 가지고있다가 클릭 시 불러옴
+        //아래에서는 해당 row_id로 글을 불러와서 보여주도록 구현예정
+        String tag = view.getTag().toString();
+        Toast.makeText(this,  tag+"getContent", Toast.LENGTH_SHORT).show();
+    }
 
 
 }

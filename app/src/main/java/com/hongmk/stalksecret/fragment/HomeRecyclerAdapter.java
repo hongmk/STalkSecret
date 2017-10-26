@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.hongmk.stalksecret.R;
@@ -44,8 +45,14 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     public void onBindViewHolder(HomeRecyclerHolder holder, int position) {
         // 각 위치에 문자열 세팅
         int itemposition = position;
+
+        holder.rowIdText.setText(list.get(itemposition).row_id);
         holder.text1View.setText(list.get(itemposition).title);
         holder.text2View.setText(list.get(itemposition).text);
+
+        //버튼 클릭 -> 해당글 불러오기를 구현하기 위해 버튼 태그에 row_id를 저장함.
+        holder.button.setTag(list.get(itemposition).row_id);
+
         Log.e("[LOG]", "onBindViewHolder" + itemposition);
 
     }
@@ -67,11 +74,15 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     // ViewHolder는 하나의 View를 보존하는 역할을 한다
     public class HomeRecyclerHolder extends RecyclerView.ViewHolder{
+        public Button button;
+        public TextView rowIdText;
         public TextView text1View;
         public TextView text2View;
 
         public HomeRecyclerHolder(View view){
             super(view);
+            button = (Button)view.findViewById(R.id.home_item_button);
+            rowIdText = (TextView)view.findViewById(R.id.home_item_row_id);
             text1View = (TextView)view.findViewById(R.id.title);
             text2View = (TextView)view.findViewById(R.id.text);
         }

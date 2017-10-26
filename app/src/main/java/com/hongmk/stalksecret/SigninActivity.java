@@ -18,4 +18,9 @@ public class SigninActivity extends AppCompatActivity {
         intent = new Intent(SigninActivity.this, HomeActivity.class);
         startActivity(intent);
     }
+
+    public void goSignupPage(View view){
+        intent = new Intent(SigninActivity.this, SignupActivity.class);
+        startActivity(intent);
+    }
 }

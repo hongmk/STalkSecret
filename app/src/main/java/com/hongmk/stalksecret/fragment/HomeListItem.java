@@ -18,10 +18,13 @@ import java.util.List;
 
 public class HomeListItem extends AppCompatActivity {
 
+    String row_id;
     String title;
     String text;
 
-    HomeListItem( String title, String text) {
+    //글의 row_id, 제목, 내용  -->추후 시간정보등도 추가필요
+    HomeListItem(String row_id, String title, String text) {
+        this.row_id = row_id;
         this.title = title;
         this.text = text;
     }
@@ -37,9 +40,11 @@ public class HomeListItem extends AppCompatActivity {
                         (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = layoutInflater.inflate(R.layout.home_list_item, null);
             }
+            TextView rowIdText = (TextView)convertView.findViewById(R.id.home_item_row_id);
             TextView text1View = (TextView)convertView.findViewById(R.id.title);
             TextView text2View = (TextView)convertView.findViewById(R.id.text);
             HomeListItem item = itemList.get(position);
+            rowIdText.setText(item.row_id);
             text1View.setText(item.title);
             text2View.setText(item.text);
             return convertView;
@@ -55,7 +60,7 @@ public class HomeListItem extends AppCompatActivity {
 
         ArrayList<HomeListItem> itemList = new ArrayList<HomeListItem>();
         for(int i = 0; i< count; i++) {
-            itemList.add(new HomeListItem(position+"_"+"Title"+i, "Text"+i));
+            itemList.add(new HomeListItem(""+i, position+"_"+"Title"+i, "Text"+i));
         }
 
         return itemList;
