@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 public class MypageActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class MypageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Switch mypageSwitch = (Switch)findViewById(R.id.mypage_switch);
+        mypageSwitch.setOnCheckedChangeListener( new switchListener() );
 
     }
 
@@ -51,4 +56,21 @@ public class MypageActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Switch 버튼의 체크상태를 받는 리스터
+    public class switchListener implements CompoundButton.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            //알림수신 여부 user정보에 반영 통신
+
+            if(isChecked == true) {
+                Toast.makeText(MypageActivity.this, "알림수신 동의완료", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MypageActivity.this, "알림수신 거부완료", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+
 }

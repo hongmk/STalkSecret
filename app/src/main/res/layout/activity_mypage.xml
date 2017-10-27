@@ -37,7 +37,6 @@
             android:background="@drawable/border">
 
             <Button
-                android:id="@+id/editNicnameBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/MoveButtonCommon"
@@ -59,7 +58,6 @@
             android:background="@drawable/border">
 
             <Button
-                android:id="@+id/editPwBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/MoveButtonCommon"
@@ -80,7 +78,6 @@
             android:background="@drawable/border">
 
             <Button
-                android:id="@+id/myContentsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/MoveButtonCommon"
@@ -102,7 +99,6 @@
             android:background="@drawable/border">
 
             <Button
-                android:id="@+id/myCommentsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/MoveButtonCommon"
@@ -134,6 +130,7 @@
                 android:text="알림수신"/>
 
             <Switch
+                android:id="@+id/mypage_switch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
