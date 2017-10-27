@@ -19,24 +19,26 @@ public class MypageActivity extends AppCompatActivity {
         toolbar.setTitle("마이페이지"); //툴바 제목 표시여부
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
-    public void onEditNicname(View view){
+    public void editNicname(View view){
         intent = new Intent(MypageActivity.this, EditNicnameActivity.class);
         startActivity(intent);
     }
 
-    public void onEditPw(View view){
+    public void editPassword(View view){
         intent = new Intent(MypageActivity.this, EditPasswordActivity.class);
         startActivity(intent);
     }
 
-    public void onMyContents (View view){
+    public void getMyContents (View view){
         intent = new Intent(MypageActivity.this, MyContentsActivity.class);
         startActivity(intent);
     }
 
-    public void onMyComments (View view){
+    public void getMyComments (View view){
         intent = new Intent(MypageActivity.this, MyCommentsActivity.class);
         startActivity(intent);
     }
@@ -45,6 +47,7 @@ public class MypageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

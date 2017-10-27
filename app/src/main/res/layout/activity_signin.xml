@@ -14,7 +14,8 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/iron"
+        android:textColor="@color/darkblue"
+        android:textSize="30dp"
         android:layout_weight="1.5"/>
 
 
@@ -25,7 +26,7 @@
         android:background="@color/iron"
         android:layout_margin="16dp"
         card_view:cardCornerRadius="1dp"
-        card_view:cardElevation="8dp">
+        card_view:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,21 +42,27 @@
 
             <!--ID-->
             <EditText
-                android:id="@+id/id_editTxt"
+                android:id="@+id/signin_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:hint="@string/id_hint"
-                android:textSize="15sp"/>
+                android:paddingBottom="16dp"
+                android:hint="아이디"
+                android:gravity="center"
+                android:textSize="18sp"/>
 
             <!--PW-->
             <EditText
-                android:id="@+id/pw_editTxt"
+                android:id="@+id/signin_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp"
-                android:hint="@string/password_hint"
-                android:textSize="15sp"
+                android:paddingBottom="16dp"
+                android:hint="비밀번호"
+                android:gravity="center"
+                android:textSize="18sp"
                 android:inputType="textPassword" />
 
             <!--빈 텍스트-->
@@ -69,10 +76,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="16dp">
 
                 <Button
-                    android:id="@+id/signIn_btn"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
@@ -82,42 +89,25 @@
                     android:onClick="onLogin"/>
 
                 <Button
-                    android:id="@+id/signUp_btn"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:tag="custom_signup_button"
                     android:text="@string/sign_up_button"
-                    android:onClick="goSignupPage"/>
+                    android:onClick="goSignup"/>
 
             </LinearLayout>
 
-            <!--빈 텍스트-->
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp" />
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="50dp"/>
 
-            <!--ID/PW 분실 시-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
 
-                <Button
-                    android:id="@+id/forgot_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/iron"
-                    android:textSize="15sp"
-                    android:tag="custom_login_button"
-                    android:background="@color/transparent"
-                    android:text="@string/forgot" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

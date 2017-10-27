@@ -1,160 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="6"
-    android:orientation="vertical"
-    tools:context="com.hongmk.stalksecret.MypageActivity">
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:weightSum="8"
+        android:orientation="vertical"
+        tools:context="com.hongmk.stalksecret.MypageActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/my_page_toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkblue"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <!--닉네임변경-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <Button
-            android:id="@+id/editNicnameBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.9"
-            style="@style/MoveButtonCommon"
-            android:text="닉네임변경"
-            android:gravity="start|center_vertical"
-            android:onClick="onEditNicname"/>
-        
-    </LinearLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/my_page_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/darkblue"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <!--비밀번호변경-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        </android.support.design.widget.AppBarLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
 
-        <Button
-            android:id="@+id/editPwBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.9"
-            style="@style/MoveButtonCommon"
-            android:text="비밀번호변경"
-            android:gravity="start|center_vertical"
-            android:onClick="onEditPw"/>
+        <!--닉네임변경-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/editNicnameBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MoveButtonCommon"
+                android:text="닉네임변경"
+                android:gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="editNicname"/>
 
-    <!--내글관리-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+        <!--비밀번호변경-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border">
 
-        <Button
-            android:id="@+id/myContentsBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.9"
-            style="@style/MoveButtonCommon"
-            android:text="내글관리"
-            android:gravity="start|center_vertical"
-            android:onClick="onMyContents"
-            />
+            <Button
+                android:id="@+id/editPwBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MoveButtonCommon"
+                android:text="비밀번호변경"
+                android:gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="editPassword"/>
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <!--내댓글관리-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        <!--내글관리-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            <Button
+                android:id="@+id/myContentsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MoveButtonCommon"
+                android:text="내글관리"
+                android:gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="getMyContents"
+                />
 
-        <Button
-            android:id="@+id/myCommentsBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.9"
-            style="@style/MoveButtonCommon"
-            android:text="내댓글관리"
-            android:gravity="start|center_vertical"
-            android:onClick="onMyComments"/>
+        </LinearLayout>
 
-    </LinearLayout>
+        <!--내댓글관리-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border">
 
-    <!--설정-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            <Button
+                android:id="@+id/myCommentsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MoveButtonCommon"
+                android:text="내댓글관리"
+                android:gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="getMyComments"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.1"
-            style="@style/MoveButtonCommon"
-            android:gravity="start|center_vertical"
-            android:text="알림수신"/>
+        <!--설정-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border">
 
-        <Switch
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:switchMinWidth="56dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/MoveButtonCommon"
+                android:gravity="start|center_vertical"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="알림수신"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"/>
+            <Switch
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:switchMinWidth="56dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

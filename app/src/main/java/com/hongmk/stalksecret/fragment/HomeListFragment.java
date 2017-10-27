@@ -33,6 +33,9 @@ public class HomeListFragment extends Fragment {
         * 최초 생성 시 INDEX[0, 1]생성 -> 탭 1로 이동 시 INDEX[2]생성 하는 방식으로 동작함(선택된 다음 탭의 내용을 미리 생성함)
         * */
         int position = FragmentPagerItem.getPosition(getArguments());
+
+        rootView.setTag(position);
+
         Log.i("[SH]", "CREATE Fragment Position:"+ position);
 
         list = HomeListItem.getList(10, position);
@@ -46,8 +49,19 @@ public class HomeListFragment extends Fragment {
 
     }
 
-    public void onRefresh(int position){
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            //화면에 실제로 보일때
+        }
+        else
+        {
+            //preload 될때(전페이지에 있을때)
+        }
     }
 
 

@@ -13,6 +13,19 @@
     android:orientation="vertical"
     tools:context="com.hongmk.stalksecret.SignupActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_page_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/darkblue"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <!--메일인증-->
     <LinearLayout
@@ -20,23 +33,22 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="사내메일"
-            android:gravity="center" />
+        android:weightSum="3"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
+            android:id="@+id/signup_email"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.8"
+            android:layout_weight="2.3"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="이메일입력"/>
+            android:layout_marginRight="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="사내메일주소를 입력하세요"/>
 
         <Button
             android:layout_width="0dp"
@@ -44,7 +56,8 @@
             android:layout_weight="0.7"
             android:gravity="center"
             android:text="메일인증"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:onClick="verifyEmail"/>
 
     </LinearLayout>
 
@@ -54,23 +67,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="사내메일"
-            android:gravity="center" />
+        android:weightSum="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
+            android:id="@+id/signup_userId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.8"
+            android:layout_weight="2.3"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="이메일입력"/>
+            android:layout_marginRight="10dp"
+            android:maxLength="10"
+            android:hint="사용할 아이디를 입력하세요(최대10자)"/>
 
         <Button
             android:layout_width="0dp"
@@ -78,7 +89,40 @@
             android:layout_weight="0.7"
             android:gravity="center"
             android:text="중복확인"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:onClick="verifyUserId"/>
+
+    </LinearLayout>
+
+    <!--닉네임지정-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <EditText
+            android:id="@+id/signup_nicname"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.3"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="사용할 닉네임을 입력하세요" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center"
+            android:text="중복확인"
+            android:textColor="@color/white"
+            android:onClick="verifyNicname"/>
 
     </LinearLayout>
 
@@ -88,23 +132,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="비밀번호"
-            android:gravity="center" />
+        android:weightSum="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
+            android:id="@+id/signup_password"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.8"
+            android:layout_weight="2.3"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="비밀번호입력"/>
+            android:layout_marginRight="10dp"
+            android:inputType="textPassword"
+            android:hint="비밀번호를 입력하세요"/>
 
         <TextView
             android:layout_width="0dp"
@@ -119,23 +161,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text=""
-            android:gravity="center" />
+        android:weightSum="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <EditText
+            android:id="@+id/signup_passwor_re"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.8"
+            android:layout_weight="2.3"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="비밀번호 재입력"/>
+            android:layout_marginRight="10dp"
+            android:inputType="textPassword"
+            android:hint="비밀번호를 한번 더 입력하세요"/>
 
         <TextView
             android:layout_width="0dp"
@@ -144,63 +184,22 @@
 
     </LinearLayout>
 
-    <!--닉네임지정-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="닉네임"
-            android:gravity="center" />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.8"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="닉네임 입력"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:gravity="center"
-            android:text="중복확인"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
-
-    <!--인증번호-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-    </LinearLayout>
-
+    <!--빈텍스트-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.2"/>
+        android:layout_weight="2.1"/>
 
-    <!--완료버튼-->
+    <!--취소/완료 버튼-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:layout_weight="0.8"
-        android:weightSum="5">
+        android:layout_weight="0.9"
+        android:weightSum="5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <TextView
             android:layout_width="0dp"
@@ -227,7 +226,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="7dp"
             android:textColor="@color/white"
-            android:onClick="signupDone"/>
+            android:onClick="completeSignup"/>
 
     </LinearLayout>
 

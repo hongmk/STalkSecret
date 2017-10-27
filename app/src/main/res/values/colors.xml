@@ -13,6 +13,7 @@
     <color name="white" type="color">#FFFFFFFF</color>
     <color name="black" type="color">#00000000</color>
     <color name="transparent" type="color">#00ff0000</color>
+    <color name="hintColor" type="color">#FFD2DBE9</color>
 
     <color name="primary_color">#3F51B5</color>
     <color name="dark_primary_color">#303F9F</color>

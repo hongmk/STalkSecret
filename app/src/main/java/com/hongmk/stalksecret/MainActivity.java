@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 //로그인 화면으로 전환
                 intent = new Intent(MainActivity.this, SigninActivity.class);
                 startActivity(intent);
+                finish();
             }
         }
     };

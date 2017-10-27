@@ -36,6 +36,17 @@ public class HomeActivity extends AppCompatActivity {
         };
     }
 
+    public static int[] tab20() {
+        return new int[] {
+                R.string.home_tab_5,
+                R.string.home_tab_4,
+                R.string.home_tab_3,
+                R.string.home_tab_2,
+                R.string.home_tab_1
+
+        };
+    }
+
     private Toolbar toolbar;
     private ViewPager viewPager;
     private SmartTabLayout viewPagerTab;
@@ -44,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentStatePagerItemAdapter adapter;
 
     SwipeRefreshLayout homeSwipe;
+    SharedPreferences refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +106,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {}
         });
 
+        //저장된 마지막 위치를 가져와서 해당 탭이 처음보일 수 있도록함.
+        SharedPreferences pref = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
+        int lastTabPosition = pref.getInt("position", 0);
+        viewPager.setCurrentItem(lastTabPosition);
+
         /*SwipeRefresh 와 ViewPager의 스크롤이 겹쳐서 오른쪽으로 이동할때도 Refresh가 됨.
         * 해당현상을 막기위해 아래로 스크롤(ACTION_UP)일 때만 SwipeRefreshLayout을 활성화함.
         */
@@ -109,19 +126,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        //저장된 마지막 위치를 가져와서 해당 탭이 처음보일 수 있도록함.
-        SharedPreferences pref = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
-        int lastTabPosition = pref.getInt("position", 0);
-        viewPager.setCurrentItem(lastTabPosition);
-
         //리스트를 아래로 당겨 Refresh하면 Activity를 재생성하는 방식으로 진행
         homeSwipe = (SwipeRefreshLayout) findViewById(R.id.home_swipe);
         homeSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.i("[SH]", "refresh!!");
-                onResume(1);
+                SharedPreferences curreuntTab = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
+                int curreuntPosition = curreuntTab.getInt("position", 0);
+
+                Log.i("[SH]", "refresh!!"+curreuntPosition);
+                //onResume(1);
+                if(curreuntPosition > 0) {
+                    viewPager.setCurrentItem(curreuntPosition-1, true);
+                    //viewPager.setCurrentItem(curreuntPosition);
+                } else {
+                    viewPager.setCurrentItem(curreuntPosition+2,true);
+                    //viewPager.setCurrentItem(curreuntPosition);
+                }
+
                 homeSwipe.setRefreshing(false);
+
             }
         });
     }
@@ -139,10 +163,16 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.home_menu_mypage) {
             intent = new Intent(HomeActivity.this, MypageActivity.class);
             startActivity(intent);
+
         } else if(item.getItemId() == R.id.home_menu_notice) {
             intent = new Intent(HomeActivity.this, NoticeActivity.class);
             startActivity(intent);
+
+        } else if(item.getItemId() == R.id.home_menu_logout) {
+            //로그아웃 시 해야할 작업이 있다면 수행함
+            finish();
         }
+
         return super.onOptionsItemSelected(item);
     }
 
