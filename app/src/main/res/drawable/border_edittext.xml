@@ -8,12 +8,12 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/facebook_brand_color" />
+        android:color="#e7e6e6" />
     <corners
-        android:topLeftRadius="7dp"
-        android:topRightRadius="7dp"
-        android:bottomLeftRadius="7dp"
-        android:bottomRightRadius="7dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
 
         />
 
