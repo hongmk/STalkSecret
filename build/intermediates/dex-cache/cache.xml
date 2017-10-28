@@ -3,6 +3,24 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\60029514\.android\build-cache\e0457a07cd2c0e3385a3672505125aeb95452078\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="1d16ffcc50b1dfa726cf978ea9f0a949cdd70e7d">
+        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55e229370d332e393b4a949eaa9ebd7f7dee2e28\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\60029514\.android\build-cache\c0986436009b5a455f1f30aa2ef9e76123e6b4da\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7dc4e0ea5b06183f6b32f08c5db6bcb6ef79c02a">
+        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e3a5e21424db3ce1df5e3ac380cbbbeea2da03ff\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Projects\STalkSecret\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -11,21 +29,12 @@
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ffc99d4c322af1cb2dbac8c7572c5db8b9bcfa06\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\HongMK\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.1\2a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0\gson-2.8.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
-        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\pre-dexed\debug\gson-2.8.1_f128f7e2c1a6f7892c02a46196894e311b6490dd.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="D:\Projects\STalkSecret\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="61aa527fae3f2b658fa800d8b792062cb91153b1">
+        sha1="d165cd5621859c93631c10324c97074adc95ccd7">
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f78ba903759e64f6b0dd2101802d35b38cc6b442\classes.dex" />
     </item>
 
