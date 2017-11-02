@@ -2,31 +2,32 @@ package com.hongmk.stalksecret.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.hongmk.stalksecret.R;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
-import java.util.ArrayList;
-
 public class HomeListFragment extends Fragment {
 
-    private SwipeRefreshLayout homeSwipe;
-    private RecyclerView recyclerView;
-    private HomeRecyclerAdapter adapter;
-    private ArrayList<HomeListItem> list = new ArrayList<HomeListItem>();
-    private static int previousSize =0;
+    private WebView webview;
+    private static final String CONTENT_LIST_URL = "http://192.168.0.4:9000/#!/contents/list";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home_list, container, false);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.home_recyclerView);
+        webview= (WebView) rootView.findViewById(R.id.home_webView);
+
+
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        //webview.setWebChromeClient(new WebBrowserClient());
+        //webview.setWebViewClient(new MyWebViewClient());
+        webview.loadUrl(CONTENT_LIST_URL);
 
         //Toast.makeText(getActivity(), "selected" + pos , Toast.LENGTH_SHORT).show();
         /*현재 생성되는 Fragment의 인덱스를 가져옴
@@ -36,32 +37,8 @@ public class HomeListFragment extends Fragment {
 
         rootView.setTag(position);
 
-        Log.i("[SH]", "CREATE Fragment Position:"+ position);
-
-        list = HomeListItem.getList(10, position);
-
-        adapter = new HomeRecyclerAdapter(rootView.getContext(), list);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext())); //세로로 스크롤 할 것이므로 LinearLayoutManager를 택함
-
         return rootView;
 
-    }
-
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser)
-    {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser)
-        {
-            //화면에 실제로 보일때
-        }
-        else
-        {
-            //preload 될때(전페이지에 있을때)
-        }
     }
 
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/main_background" />
+        android:background="@color/facebook_brand_color"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.8">
+            android:layout_weight="1.6">
 
             <ImageView
                 android:id="@+id/mainIcon"
@@ -58,6 +58,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="Open up your mind"
+                android:textColor="@color/hintColor"
                 style="@style/MainSloganText" />
 
         </RelativeLayout>

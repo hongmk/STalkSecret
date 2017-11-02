@@ -56,17 +56,10 @@
         android:layout_height="match_parent"
         android:layout_below="@id/header">
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/home_swipe"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <android.support.v4.view.ViewPager
                 android:id="@id/home_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
-        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/home_create_button"
@@ -75,12 +68,12 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/primary"
+            android:backgroundTint="@color/facebook_brand_color"
             android:clickable="true"
-            app:backgroundTint="@color/primary"
+            app:backgroundTint="@color/darkblue"
             app:fabSize="normal"
             app:rippleColor="@color/transparent"
-            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:srcCompat="@drawable/icon_create"
             android:onClick="createContentClick"/>
 
     </FrameLayout>

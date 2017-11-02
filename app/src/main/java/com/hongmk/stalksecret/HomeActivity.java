@@ -4,16 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.hongmk.stalksecret.fragment.HomeListFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -53,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentPagerItems pages;
     //FragmentPagerItemAdapter 사용 시 첫 생성 할 때 Tab1, Tab2에 모두 position 0으로 생성하므로 FragmentStatePagerItemAdapter 사용함.
     private FragmentStatePagerItemAdapter adapter;
+    private FloatingActionButton home_create_button;
 
     SwipeRefreshLayout homeSwipe;
     SharedPreferences refresh;
@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //toolbar.setTitle(R.string.demo_title_indicator_trick1); //툴바 제목 표시여부
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //왼쪽상단 BackKey 표시여부
-
+        home_create_button = (FloatingActionButton)findViewById(R.id.home_create_button);
         viewPager = (ViewPager) findViewById(R.id.home_viewpager);
         viewPagerTab = (SmartTabLayout) findViewById(R.id.home_viewpagertab);
 
@@ -100,6 +100,14 @@ public class HomeActivity extends AppCompatActivity {
                 editor.putInt("position", position);
                 editor.commit();
 
+                SharedPreferences board_id_pref = getSharedPreferences("board_id", Activity.MODE_PRIVATE);
+                int board_id = board_id_pref.getInt("board_id", 0);
+
+                if(position > board_id) {
+                    home_create_button.setVisibility(View.INVISIBLE);
+                } else {
+                    home_create_button.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -118,36 +126,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() != MotionEvent.ACTION_UP) {
-                    homeSwipe.setEnabled(false);
+                    ;
                 } else {
-                    homeSwipe.setEnabled(true);
+                    ;
                 }
                 return false;
             }
         });
 
-        //리스트를 아래로 당겨 Refresh하면 Activity를 재생성하는 방식으로 진행
-        homeSwipe = (SwipeRefreshLayout) findViewById(R.id.home_swipe);
-        homeSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                SharedPreferences curreuntTab = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
-                int curreuntPosition = curreuntTab.getInt("position", 0);
-
-                Log.i("[SH]", "refresh!!"+curreuntPosition);
-                //onResume(1);
-                if(curreuntPosition > 0) {
-                    viewPager.setCurrentItem(curreuntPosition-1, true);
-                    //viewPager.setCurrentItem(curreuntPosition);
-                } else {
-                    viewPager.setCurrentItem(curreuntPosition+2,true);
-                    //viewPager.setCurrentItem(curreuntPosition);
-                }
-
-                homeSwipe.setRefreshing(false);
-
-            }
-        });
     }
 
     //메뉴에 보일 레이아웃을 설정
@@ -170,6 +156,8 @@ public class HomeActivity extends AppCompatActivity {
 
         } else if(item.getItemId() == R.id.home_menu_logout) {
             //로그아웃 시 해야할 작업이 있다면 수행함
+            intent = new Intent(HomeActivity.this, SigninActivity.class);
+            startActivity(intent);d
             finish();
         }
 
@@ -180,22 +168,6 @@ public class HomeActivity extends AppCompatActivity {
     public void createContentClick(View view){
         intent = new Intent(HomeActivity.this, CreateBoardActivity.class);
         startActivity(intent);
-    }
-
-    //@Override
-    protected void onResume(int resumeType){
-        if(resumeType == 1) {
-            Intent refresh = new Intent(this, HomeActivity.class);
-            startActivity(refresh);
-            this.finish();
-        }
-    }
-
-    public void getContent(View view){
-        //버튼이 생성될때 글의 row_id를 tag로 가지고있다가 클릭 시 불러옴
-        //아래에서는 해당 row_id로 글을 불러와서 보여주도록 구현예정
-        String tag = view.getTag().toString();
-        Toast.makeText(this,  tag+"getContent", Toast.LENGTH_SHORT).show();
     }
 
 

@@ -5,14 +5,17 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/home_recyclerView"
+        <WebView
+            android:id="@+id/home_webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
             android:background="@android:color/background_light">
 
-        </android.support.v7.widget.RecyclerView>
+        </WebView>
 
 
 </FrameLayout>
