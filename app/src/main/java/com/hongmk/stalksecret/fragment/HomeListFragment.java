@@ -14,7 +14,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 public class HomeListFragment extends Fragment {
 
     private WebView webview;
-    private static final String CONTENT_LIST_URL = "http://192.168.0.4:9000/#!/contents/list";
+    private static final String CONTENT_LIST_URL = "http://172.16.2.8:9000/#!/contents/list";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

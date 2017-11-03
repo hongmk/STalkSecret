@@ -157,7 +157,7 @@ public class HomeActivity extends AppCompatActivity {
         } else if(item.getItemId() == R.id.home_menu_logout) {
             //로그아웃 시 해야할 작업이 있다면 수행함
             intent = new Intent(HomeActivity.this, SigninActivity.class);
-            startActivity(intent);d
+            startActivity(intent);
             finish();
         }
 
