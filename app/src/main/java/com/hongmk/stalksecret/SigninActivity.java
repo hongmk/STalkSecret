@@ -35,7 +35,7 @@ public class SigninActivity extends AppCompatActivity {
         EditText userIdText = (EditText) findViewById(R.id.signin_id);
         EditText passwordText = (EditText) findViewById(R.id.signin_password);
 
-        new Login().execute("http://172.16.2.8:52275/users/login",
+        new Login().execute("http://192.168.0.4:52275/users/login",
                 userIdText.getText().toString(),
                 passwordText.getText().toString());
     }
