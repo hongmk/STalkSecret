@@ -3,24 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\60029514\.android\build-cache\e0457a07cd2c0e3385a3672505125aeb95452078\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="1d16ffcc50b1dfa726cf978ea9f0a949cdd70e7d">
-        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_55e229370d332e393b4a949eaa9ebd7f7dee2e28\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\60029514\.android\build-cache\c0986436009b5a455f1f30aa2ef9e76123e6b4da\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="7dc4e0ea5b06183f6b32f08c5db6bcb6ef79c02a">
-        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e3a5e21424db3ce1df5e3ac380cbbbeea2da03ff\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\Projects\STalkSecret\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -34,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="d165cd5621859c93631c10324c97074adc95ccd7">
+        sha1="2e355539544d1627dcc51831fce24a22408fe863">
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f78ba903759e64f6b0dd2101802d35b38cc6b442\classes.dex" />
     </item>
 
