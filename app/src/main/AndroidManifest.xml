@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="android.support.multidex.MultiDexApplication">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +32,10 @@
         <activity android:name=".HomeActivity" >
 
         </activity>
-        <activity android:name=".CreateBoardActivity"/>
-        <activity android:name=".ViewBoardActivity" />
+        <activity android:name=".CreateContentActivity"/>
+        <activity android:name=".GetContentActivity" />
 
-        <activity android:name=".EditBoardActivity">
+        <activity android:name=".EditContentActivity">
 
         </activity>
 

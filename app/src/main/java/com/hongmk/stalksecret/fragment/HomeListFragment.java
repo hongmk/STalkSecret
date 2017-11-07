@@ -12,7 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.hongmk.stalksecret.R;
-import com.hongmk.stalksecret.ViewBoardActivity;
+import com.hongmk.stalksecret.GetContentActivity;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 public class HomeListFragment extends Fragment {
@@ -25,19 +25,20 @@ public class HomeListFragment extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home_list, container, false);
         webview= (WebView) rootView.findViewById(R.id.home_webView);
 
+        int position = FragmentPagerItem.getPosition(getArguments());
 
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         //webview.setWebChromeClient(new WebBrowserClient());
         webview.setWebViewClient(new MyWebViewClient());
-        webview.loadUrl(CONTENT_LIST_URL);
+        webview.loadUrl(CONTENT_LIST_URL + "?board_id="+ position);
 
-        //Toast.makeText(getActivity(), "selected" + pos , Toast.LENGTH_SHORT).show();
+
+        //Toast.makeText(getActivity(),CONTENT_LIST_URL + "?board_id="+ position, Toast.LENGTH_SHORT).show();
         /*현재 생성되는 Fragment의 인덱스를 가져옴
         * 최초 생성 시 INDEX[0, 1]생성 -> 탭 1로 이동 시 INDEX[2]생성 하는 방식으로 동작함(선택된 다음 탭의 내용을 미리 생성함)
         * */
-        int position = FragmentPagerItem.getPosition(getArguments());
 
         rootView.setTag(position);
 
@@ -51,14 +52,12 @@ public class HomeListFragment extends Fragment {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Log.i("[URL]=", url);
 
-//            view.loadUrl(url);
-//            return true;
-//
             String urls[] = url.split("&");
 
             if (urls[0].equals("http://192.168.0.4:9000/contents/content")) {
                 Log.i("[URL1]=", urls[1]);
-                Intent intent = new Intent(getActivity(), ViewBoardActivity.class);
+                Intent intent = new Intent(getActivity(), GetContentActivity.class);
+                intent.putExtra("content_id", urls[1]);
                 startActivity(intent);
 
                 return true;

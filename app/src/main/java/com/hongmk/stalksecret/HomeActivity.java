@@ -95,15 +95,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onPageSelected(int position)
             {
                 //최종선택된 위치를 pref변수에 항상 저장
-                SharedPreferences lastTab = getSharedPreferences("LastTab", MODE_PRIVATE);
-                SharedPreferences.Editor editor = lastTab.edit();
-                editor.putInt("position", position);
+                SharedPreferences current_board = getSharedPreferences("current_board", MODE_PRIVATE);
+                SharedPreferences.Editor editor = current_board.edit();
+                editor.putInt("current_board", position);
                 editor.commit();
 
-                SharedPreferences board_id_pref = getSharedPreferences("board_id", Activity.MODE_PRIVATE);
-                int board_id = board_id_pref.getInt("board_id", 0);
+                SharedPreferences board_id_pref = getSharedPreferences("user_dept", Activity.MODE_PRIVATE);
+                int user_dept = board_id_pref.getInt("user_dept", 0);
 
-                if(position > board_id) {
+                if(position > user_dept) {
                     home_create_button.setVisibility(View.INVISIBLE);
                 } else {
                     home_create_button.setVisibility(View.VISIBLE);
@@ -115,8 +115,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //저장된 마지막 위치를 가져와서 해당 탭이 처음보일 수 있도록함.
-        SharedPreferences pref = getSharedPreferences("LastTab", Activity.MODE_PRIVATE);
-        int lastTabPosition = pref.getInt("position", 0);
+        SharedPreferences pref = getSharedPreferences("current_board", Activity.MODE_PRIVATE);
+        int lastTabPosition = pref.getInt("current_board", 0);
         viewPager.setCurrentItem(lastTabPosition);
 
         /*SwipeRefresh 와 ViewPager의 스크롤이 겹쳐서 오른쪽으로 이동할때도 Refresh가 됨.
@@ -166,7 +166,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //글작성 버튼 클릭 시 동작
     public void createContentClick(View view){
-        intent = new Intent(HomeActivity.this, CreateBoardActivity.class);
+        intent = new Intent(HomeActivity.this, CreateContentActivity.class);
         startActivity(intent);
     }
 

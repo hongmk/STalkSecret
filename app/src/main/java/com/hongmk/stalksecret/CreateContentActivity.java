@@ -1,11 +1,14 @@
 package com.hongmk.stalksecret;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,33 +25,59 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
-public class SigninActivity extends AppCompatActivity {
+public class CreateContentActivity extends AppCompatActivity {
+
     private Intent intent;
-    private EditText userIdText;
-    private EditText passwordText;
+    private int board_id;
+    private String user_id;
+    private String user_nicname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_create_content);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.make_content_toolbar);
+        toolbar.setTitle("글쓰기"); //툴바 제목 표시여부
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SharedPreferences board_id_pref = getSharedPreferences("current_board", Activity.MODE_PRIVATE);
+        board_id = board_id_pref.getInt("current_board", 0);
+
+        SharedPreferences user_id_pref = getSharedPreferences("user_id", Activity.MODE_PRIVATE);
+        user_id = user_id_pref.getString("user_id", "");
+
+        SharedPreferences user_nicname_pref = getSharedPreferences("user_nicname", Activity.MODE_PRIVATE);
+        user_nicname = user_nicname_pref.getString("user_nicname", "");
+
+        //Toast.makeText(CreateContentActivity.this, ""+board_id+user_id+user_nicname, Toast.LENGTH_SHORT).show();
+
     }
 
-    public void onLogin(View view){
-        userIdText = (EditText) findViewById(R.id.signin_id);
-        passwordText = (EditText) findViewById(R.id.signin_password);
-
-        new Login().execute("http://192.168.0.4:52275/users/login",
-                userIdText.getText().toString(),
-                passwordText.getText().toString());
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    public void goSignup(View view){
-        intent = new Intent(SigninActivity.this, SignupActivity.class);
-        startActivity(intent);
+    public void createContent(View view) {
+
+        EditText title = (EditText)findViewById(R.id.content_title);
+        EditText content = (EditText)findViewById(R.id.content_content);
+
+        new Login().execute("http://192.168.0.4:52275/contents",
+                user_id,
+                user_nicname,
+                ""+board_id,
+                title.getText().toString(),
+                content.getText().toString());
     }
 
     class Login extends AsyncTask<String, String, String> {
-        ProgressDialog dialog = new ProgressDialog(SigninActivity.this);
+        ProgressDialog dialog = new ProgressDialog(CreateContentActivity.this);
 
         @Override
         protected String doInBackground(String... params) {
@@ -60,7 +89,11 @@ public class SigninActivity extends AppCompatActivity {
                 //서버로 보낼 데이터를 JSON형태로 wrapping
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("user_id", params[1]);
-                postDataParams.put("password", params[2]);
+                postDataParams.put("nicname", params[2]);
+                postDataParams.put("board_id", params[3]);
+                postDataParams.put("title", params[4]);
+                postDataParams.put("content", params[5]);
+
 
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
                 if(conn != null ){
@@ -112,45 +145,15 @@ public class SigninActivity extends AppCompatActivity {
             dialog.dismiss();
             try {
                 JSONObject json = new JSONObject(s);
-                if (json.getBoolean("result") == true) {//로그인 성공
-
-                    //로그인토큰 저장
-                    String token = json.getString("token");
-                    SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("token", token);
-                    editor.commit();
-
-                    //사용자 부서 저장
-                    int user_dept = json.getInt("user_dept");
-                    SharedPreferences user_dept_pref= getSharedPreferences("user_dept", MODE_PRIVATE);
-                    SharedPreferences.Editor user_dept_editor = user_dept_pref.edit();
-                    user_dept_editor.putInt("user_dept", user_dept);
-                    user_dept_editor.commit();
-
-
-                    //사용자 id 저장
-                    SharedPreferences user_id_pref= getSharedPreferences("user_id", MODE_PRIVATE);
-                    SharedPreferences.Editor user_id_editor = user_id_pref.edit();
-                    user_id_editor.putString("user_id", userIdText.getText().toString());
-                    user_id_editor.commit();
-
-                    //사용자 닉네임 저장
-                    String user_nicname = json.getString("nicname");
-                    SharedPreferences user_nicname_pref= getSharedPreferences("user_nicname", MODE_PRIVATE);
-                    SharedPreferences.Editor user_nicname_editor = user_nicname_pref.edit();
-                    user_nicname_editor.putString("user_nicname", user_nicname);
-                    user_nicname_editor.commit();
-
-                    Toast.makeText(SigninActivity.this, user_nicname+"님 환영합니다.", Toast.LENGTH_SHORT).show();
-
-                    intent = new Intent(SigninActivity.this, HomeActivity.class);
+                if (json.getBoolean("result") == true) {//글작성 성공
+                    finishAffinity();
+                    intent = new Intent(CreateContentActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
 
-                } else {//로그인 실패
-                    Toast.makeText(SigninActivity.this,
-                            "아이디가 없거나 암호가 틀렸습니다.",
+                } else {
+                    Toast.makeText(CreateContentActivity.this,
+                            "글 작성중 오류발생. 다시 시도해주세요.",
                             Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) { e.printStackTrace(); }
@@ -182,4 +185,7 @@ public class SigninActivity extends AppCompatActivity {
             return result.toString();
         }
     }
+
+
 }
+
