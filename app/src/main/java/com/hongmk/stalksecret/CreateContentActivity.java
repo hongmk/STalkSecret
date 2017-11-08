@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -68,12 +69,19 @@ public class CreateContentActivity extends AppCompatActivity {
         EditText title = (EditText)findViewById(R.id.content_title);
         EditText content = (EditText)findViewById(R.id.content_content);
 
-        new Login().execute("http://192.168.0.4:52275/contents",
-                user_id,
-                user_nicname,
-                ""+board_id,
-                title.getText().toString(),
-                content.getText().toString());
+        if(TextUtils.isEmpty(title.getText().toString())) {
+            Toast.makeText(CreateContentActivity.this, "글 제목을 입력해주세요", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(content.getText().toString())) {
+            Toast.makeText(CreateContentActivity.this, "글 내용을 입력해주세요", Toast.LENGTH_SHORT).show();
+        } else {
+
+            new Login().execute("http://192.168.0.4:52275/contents",
+                    user_id,
+                    user_nicname,
+                    "" + board_id,
+                    title.getText().toString(),
+                    content.getText().toString());
+        }
     }
 
     class Login extends AsyncTask<String, String, String> {

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.hongmk.stalksecret.R;
 import com.hongmk.stalksecret.GetContentActivity;
@@ -54,11 +55,16 @@ public class HomeListFragment extends Fragment {
 
             String urls[] = url.split("&");
 
-            if (urls[0].equals("http://192.168.0.4:9000/contents/content")) {
+            if(urls[1].equals("getContent")) {
                 Log.i("[URL1]=", urls[1]);
                 Intent intent = new Intent(getActivity(), GetContentActivity.class);
-                intent.putExtra("content_id", urls[1]);
+                intent.putExtra("content_id", urls[2]);
                 startActivity(intent);
+
+                return true;
+
+            } else if(urls[1].equals("share")) {
+                Toast.makeText(getActivity(), "공유기능은 준비중입니다", Toast.LENGTH_SHORT).show();
 
                 return true;
             }

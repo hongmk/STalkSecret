@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_dark" >
+        android:background="@color/shb_bg_navy" >
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -68,9 +68,9 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/facebook_brand_color"
+            android:backgroundTint="@color/shb_button"
             android:clickable="true"
-            app:backgroundTint="@color/darkblue"
+            app:backgroundTint="@color/shb_button"
             app:fabSize="normal"
             app:rippleColor="@color/transparent"
             app:srcCompat="@drawable/icon_create"

@@ -31,40 +31,51 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2.98"
-            android:weightSum="2"
+            android:weightSum="3"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/content_title"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:hint="글 제목"
-                android:textColorHint="@color/hintColor"
-                android:backgroundTint="@color/iron"
-                android:layout_weight="0.2">
-
-            </EditText>
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.8"
+                android:layout_weight="3"
                 android:scrollbars="vertical">
 
-                    <EditText
-                        android:id="@+id/content_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="15"
-                        android:inputType="textMultiLine"
-                        android:gravity="top"
-                        android:linksClickable="true"
-                        android:autoLink="web"
-                        android:backgroundTint="@android:color/transparent"
-                        android:textColorHint="@color/hintColor"
-                        android:hint="여러분의 생각, 의견을 마음껏 표현해주세요!">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="2">
 
-                    </EditText>
+                    <EditText
+                        android:id="@+id/content_title"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingBottom="20dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:hint="글 제목"
+                        android:textColorHint="@color/hintColor"
+                        android:backgroundTint="@color/iron" />
+
+
+                        <EditText
+                            android:id="@+id/content_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="15"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:inputType="textMultiLine"
+                            android:gravity="top"
+                            android:linksClickable="true"
+                            android:autoLink="web"
+                            android:backgroundTint="@android:color/transparent"
+                            android:textColorHint="@color/hintColor"
+                            android:hint="여러분의 생각, 의견을 마음껏 표현해주세요!"/>
+
+                </LinearLayout>
 
             </ScrollView>
 

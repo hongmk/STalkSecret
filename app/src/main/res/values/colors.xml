@@ -27,6 +27,18 @@
     <color name="login_accent">#FFFFFF</color>
     <color name="iron">#CCCCCC</color>
 
+    <color name="shb_ci_navy">#0b1966</color>
+    <color name="shb_bg_navy">#303F9F</color>
+    <color name="shb_navy">#1A237E</color>
+    <color name="shb_button">#0D47A1</color>
+
+    <color name="shb_gray">#455A64</color>
+    <color name="shb_deep_gray">#37474F</color>
+    <color name="shb_medium_blur_gray">#607D8B</color>
+    <color name="shb_blue_gray">#607D8B</color>
+
+
+
     <!--home 화면 가져오기용-->
     <color name="primary">#3C515C</color>
     <color name="primary_dark">#142E3C</color>
@@ -47,5 +59,6 @@
     <color name="teal_500">#009688</color>
     <color name="green_500">#4CAF50</color>
     <color name="light_green_500">#8BC34A</color>
+
 
 </resources>
