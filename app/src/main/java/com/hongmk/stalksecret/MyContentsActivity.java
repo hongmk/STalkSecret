@@ -3,6 +3,7 @@ package com.hongmk.stalksecret;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,11 +42,15 @@ public class MyContentsActivity extends AppCompatActivity {
     ItemAdapter itemAdpater = null;
 
     class Item {
-        String title;
-        String text;
-        Item( String title, String text) {
-            this.title = title;
-            this.text = text;
+        String item_id;
+        String item_title;
+        String item_text;
+        String item_date;
+        Item( String id, String title, String text, String date) {
+            this.item_id = id;
+            this.item_title = title;
+            this.item_text = text;
+            this.item_date = date;
         }
     }
 
@@ -58,11 +64,18 @@ public class MyContentsActivity extends AppCompatActivity {
                         (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = layoutInflater.inflate(R.layout.my_contents_item, null);
             }
-            TextView text1View = (TextView)convertView.findViewById(R.id.title);
-            TextView text2View = (TextView)convertView.findViewById(R.id.text);
+            TextView content_id = (TextView)convertView.findViewById(R.id.mycontent_id);
+            TextView content_title = (TextView)convertView.findViewById(R.id.mycontent_title);
+            TextView content_text = (TextView)convertView.findViewById(R.id.mycontent_text);
+            TextView content_date = (TextView)convertView.findViewById(R.id.mycontent_date);
+
             Item item = itemList.get(position);
-            text1View.setText(item.title);
-            text2View.setText(item.text);
+
+            content_id.setText(item.item_id);
+            content_title.setText(item.item_title);
+            content_text.setText(item.item_text);
+            content_date.setText(item.item_date);
+
             return convertView;
         }
 
@@ -70,7 +83,6 @@ public class MyContentsActivity extends AppCompatActivity {
             super(context, resource, objects);
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,11 +156,22 @@ public class MyContentsActivity extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject json = jsonArray.getJSONObject(i);
 
-                        itemList.add(new Item(json.getString("title"), json.getString("content")));
+                        itemList.add(new Item(json.getString("row_id"),
+                                                json.getString("title"),
+                                                json.getString("content"),
+                                                json.getString("last_modify_date").replace("T"," ").replace(".000Z","") ));
                     }
                     listView = (ListView)findViewById(R.id.listView);
                     itemAdpater = new ItemAdapter(MyContentsActivity.this, R.layout.my_contents_item,  itemList);
                     listView.setAdapter(itemAdpater);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            TextView content_id= (TextView)view.findViewById(R.id.mycontent_id);
+                            Toast.makeText(MyContentsActivity.this, content_id.getText().toString(), Toast.LENGTH_SHORT).show();
+                            getContent(content_id.getText().toString());
+                        }
+                    });
 
                 } else {//인증실패
 
@@ -184,6 +207,12 @@ public class MyContentsActivity extends AppCompatActivity {
 
             }
             return result.toString();
+        }
+
+        private void getContent(String content_id) {
+            Intent intent = new Intent(MyContentsActivity.this, GetContentActivity.class);
+            intent.putExtra("content_id", content_id);
+            startActivity(intent);
         }
     }
 

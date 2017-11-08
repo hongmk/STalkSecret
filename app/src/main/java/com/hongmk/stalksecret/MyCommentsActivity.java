@@ -3,6 +3,7 @@ package com.hongmk.stalksecret;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,11 +43,15 @@ public class MyCommentsActivity extends AppCompatActivity {
 
 
     class Item {
-        String cmTitle;
-        String cmText;
-        Item( String cmTitle, String cmText) {
-            this.cmTitle = cmTitle;
-            this.cmText = cmText;
+        String item_id;
+        String item_content_id;
+        String item_text;
+        String item_date;
+        Item( String id, String title, String text, String date) {
+            this.item_id = id;
+            this.item_content_id = title;
+            this.item_text = text;
+            this.item_date = date;
         }
     }
 
@@ -59,11 +65,16 @@ public class MyCommentsActivity extends AppCompatActivity {
                         (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = layoutInflater.inflate(R.layout.my_comments_item, null);
             }
-            TextView cmText1View = (TextView)convertView.findViewById(R.id.cmTitle);
-            TextView cmText2View = (TextView)convertView.findViewById(R.id.cmText);
+            TextView comment_id = (TextView)convertView.findViewById(R.id.mycomment_id);
+            TextView comment_content_id = (TextView)convertView.findViewById(R.id.mycomment_content_id);
+            TextView comment_text = (TextView)convertView.findViewById(R.id.mycomment_text);
+            TextView comment_date = (TextView)convertView.findViewById(R.id.mycomment_date);
+
             Item item = itemList.get(position);
-            cmText1View.setText(item.cmTitle);
-            cmText2View.setText(item.cmText);
+            comment_id.setText(item.item_id);
+            comment_content_id.setText(item.item_content_id);
+            comment_text.setText(item.item_text);
+            comment_date.setText(item.item_date);
             return convertView;
         }
 
@@ -142,12 +153,19 @@ public class MyCommentsActivity extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject json = jsonArray.getJSONObject(i);
 
-                        itemList.add(new Item(json.getString("content_id"), json.getString("comment")));
+                        itemList.add(new Item(json.getString("_id"), json.getString("content_id"), json.getString("comment"), json.getString("create_date")));
                     }
                     listView = (ListView)findViewById(R.id.cmListView);
                     itemAdpater = new ItemAdapter(MyCommentsActivity.this, R.layout.my_comments_item, itemList);
                     listView.setAdapter(itemAdpater);
-
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            TextView content_id= (TextView)view.findViewById(R.id.mycomment_content_id);
+                            Toast.makeText(MyCommentsActivity.this, content_id.getText().toString(), Toast.LENGTH_SHORT).show();
+                            getContent(content_id.getText().toString());
+                        }
+                    });
 
                 } else {//인증실패
 
@@ -183,6 +201,12 @@ public class MyCommentsActivity extends AppCompatActivity {
 
             }
             return result.toString();
+        }
+
+        private void getContent(String content_id) {
+            Intent intent = new Intent(MyCommentsActivity.this, GetContentActivity.class);
+            intent.putExtra("content_id", content_id);
+            startActivity(intent);
         }
     }
 }
