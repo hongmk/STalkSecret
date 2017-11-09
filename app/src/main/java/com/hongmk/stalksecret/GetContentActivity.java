@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -17,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class GetContentActivity extends AppCompatActivity {
@@ -26,6 +29,9 @@ public class GetContentActivity extends AppCompatActivity {
     TextView timeText;
     TextView titleText;
     TextView contentText;
+
+    ExpandableListView list;
+    ArrayList<ChildItem> childItems = new ArrayList<ChildItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +52,7 @@ public class GetContentActivity extends AppCompatActivity {
         contentText = (TextView)findViewById(R.id.get_content_content);
 
         new GetContent().execute("http://192.168.0.4:52275/contents/content/"+content_id);
-
+        new GetComments().execute("http://192.168.0.4:52275/comments/list/"+15);
     }
 
     @Override
@@ -141,6 +147,95 @@ public class GetContentActivity extends AppCompatActivity {
         }
     }
 
+
+    class GetComments extends AsyncTask<String, String, String> {
+        ProgressDialog dialog = new ProgressDialog(GetContentActivity.this);
+
+        @Override
+        protected String doInBackground(String... params) {
+            StringBuilder output = new StringBuilder();
+            try {
+                URL url = new URL(params[0]);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                if (conn != null) {
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("GET");
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
+                    String line = null;
+                    while(true) {
+                        line = reader.readLine();
+                        if (line == null) break;
+                        output.append(line);
+                    }
+                    reader.close();
+                    conn.disconnect();
+                }
+            } catch (Exception e) { e.printStackTrace(); }
+            return output.toString();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.setMessage("글 조회중...");
+            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            dialog.dismiss();
+            try {
+                JSONArray jsonArray = new JSONArray(s);
+                if (jsonArray.length() > 0) {
+
+                    for (int i = 0; i < jsonArray.length(); i++){
+                        JSONObject json = jsonArray.getJSONObject(i);
+
+                        childItems.add(new ChildItem(json.getString("nicname"), json.getString("comment")));
+                    }
+                    list = (ExpandableListView)findViewById(R.id.get_content_listview);
+                    list.setAdapter(new CustomExpandableListAdapter(GetContentActivity.this, childItems));
+
+                } else {//인증실패
+
+                    Toast.makeText(GetContentActivity.this,
+                            "댓글 목록이 없습니다.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+            } catch (Exception e) { e.printStackTrace(); }
+
+        }
+
+        public String getPostDataString(JSONObject params) throws Exception {
+
+            StringBuilder result = new StringBuilder();
+            boolean first = true;
+
+            Iterator<String> itr = params.keys();
+
+            while(itr.hasNext()){
+
+                String key= itr.next();
+                Object value = params.get(key);
+
+                if (first)
+                    first = false;
+                else
+                    result.append("&");
+
+                result.append(URLEncoder.encode(key, "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+
+            }
+            return result.toString();
+        }
+
+    }
 
 
 }
