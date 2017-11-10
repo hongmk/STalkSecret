@@ -95,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                 SharedPreferences board_id_pref = getSharedPreferences("user_dept", Activity.MODE_PRIVATE);
                 int user_dept = board_id_pref.getInt("user_dept", 0);
 
-                if(position > user_dept) {
+                if(position !=0 && user_dept != position) {
                     home_create_button.setVisibility(View.INVISIBLE);
                 } else {
                     home_create_button.setVisibility(View.VISIBLE);

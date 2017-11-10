@@ -4,106 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.hongmk.stalksecret.EditNicnameActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/SignupTheme">
+    android:layout_height="match_parent">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="8"
-    android:orientation="vertical">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/edit_nickname_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkblue"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <!--현재 닉네임-->
-    <TextView
-        android:id="@+id/edit_nicname_current"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:text="STalk제작자"/>
-
-
-    <EditText
-        android:id="@+id/edit_nicname_new"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textSize="18dp"
-        android:hint="변경할 닉네임"
-        android:background="@drawable/border_edittext"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:text="닉네임 검증"
-        android:onClick="verifyEditNicname"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        />
-
-    <!--취소/완료 버튼-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        android:weightSum="5"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="2dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="8">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/edit_nickname_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/shb_bg_navy"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <!--현재 닉네임-->
+        <TextView
+            android:id="@+id/edit_nicname_current"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:layout_margin="13dp"
+            android:gravity="center"
+            android:textColor="@color/shb_deep_gray"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_nicname_new"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="13dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/border_edittext"
+            android:gravity="center"
+            android:hint="변경할 닉네임"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/edit_nicname_verify"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="17dp"
+            android:layout_weight="1.1"
+            android:background="@color/shb_button"
+            android:text="닉네임 검증"
+            android:textColor="@color/white"
+            android:onClick="verifyEditNicname" />
+
+        <!--완료 버튼-->
+        <Button
+            android:id="@+id/edit_nicname_complete"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="17dp"
+            android:layout_weight="1.1"
+            android:background="@color/shb_button"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:onClick="completeEditNicname" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4.8"/>
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="취소"
-            android:layout_weight="0.1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="7dp"
-            android:textColor="@color/white"
-            android:onClick="goMypage"/>
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="완료"
-            android:layout_weight="0.1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="7dp"
-            android:textColor="@color/white"
-            android:onClick="completeEditNicname"/>
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.8" />
 
     </LinearLayout>
-
-</LinearLayout>
 </android.support.v7.widget.CardView>

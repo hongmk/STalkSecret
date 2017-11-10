@@ -36,7 +36,7 @@
     <color name="shb_deep_gray">#37474F</color>
     <color name="shb_medium_blur_gray">#607D8B</color>
     <color name="shb_blue_gray">#607D8B</color>
-
+    <color name="shb_light_gray">#E0E0E0</color>
 
 
     <!--home 화면 가져오기용-->

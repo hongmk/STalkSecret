@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences restful_ip = getSharedPreferences("restful_ip", MODE_PRIVATE);
         SharedPreferences.Editor restful_ip_editor = restful_ip.edit();
-        restful_ip_editor.putString("restful_ip", "http://172.16.2.8:52275");
+        restful_ip_editor.putString("restful_ip", "http://192.168.0.4:52275");
         restful_ip_editor.commit();
 
         SharedPreferences restful_ip_pref1 = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences angular_ip = getSharedPreferences("angular_ip", MODE_PRIVATE);
         SharedPreferences.Editor angular_ip_editor = angular_ip.edit();
-        angular_ip_editor.putString("angular_ip", "http://172.16.2.8:9000");
+        angular_ip_editor.putString("angular_ip", "http://192.168.0.4:9000");
         angular_ip_editor.commit();
 
         //2초뒤 핸들러 호출
