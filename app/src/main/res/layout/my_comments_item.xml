@@ -22,7 +22,7 @@
             android:scaleX="0.9"
             android:scaleY="0.9"
             android:buttonTint="@color/facebook_brand_color"
-            android:focusable="false"/>
+            android:focusable="false" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -38,7 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|end"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="7dp"
+                android:textColor="@color/shb_medium_blur_gray"
+                android:textSize="12sp"
                 android:focusable="false"/>
 
                 <TextView

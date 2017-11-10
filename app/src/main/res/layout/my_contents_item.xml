@@ -31,15 +31,17 @@
             android:layout_weight="1.8"
             android:focusable="false"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="13dp">
 
             <TextView
                 android:id="@+id/mycontent_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|end"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:textSize="10sp"
+                android:textColor="@color/shb_medium_blur_gray"
                 android:focusable="false"/>
 
             <TextView
@@ -48,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:gravity="start"
                 android:text="Title"
                 android:textStyle="bold"
@@ -60,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textSize="15dp"
+                android:textSize="13dp"
                 android:textColor="#4b4b4b"
                 android:text="contents"
                 android:gravity="start"

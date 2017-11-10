@@ -181,6 +181,7 @@ public class GetContentActivity extends AppCompatActivity {
                     contentText.setText(json.getString("content"));
                     comment_cnt.setText("댓글 "+json.getInt("comment_cnt")+"개");
                     comment_cnt.setTag(json.getInt("comment_cnt"));
+
                 } else {//인증실패
 
                     Toast.makeText(GetContentActivity.this,
@@ -378,8 +379,11 @@ public class GetContentActivity extends AppCompatActivity {
                 if (json.getBoolean("result") == true) {//성공
 
                     Toast.makeText(GetContentActivity.this, "댓글작성 완료", Toast.LENGTH_SHORT).show();
-                    onBackPressed();
-                    finish();
+                    comment_text.setText("");
+                    comment_text.clearFocus();
+                    comment_cnt.setText("댓글 "+json.getInt("comment_cnt")+"개");
+                    comment_cnt.setTag(json.getInt("comment_cnt"));
+                    new GetComments().execute(restful_ip+"/comments/list/"+content_id);
 
                 } else {//실패
                     Toast.makeText(GetContentActivity.this,

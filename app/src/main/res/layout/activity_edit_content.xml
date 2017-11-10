@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hongmk.stalksecret.CreateContentActivity">
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -22,7 +20,7 @@
                 android:id="@+id/edit_content_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/darkblue"
+                android:background="@color/shb_bg_navy"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
@@ -32,65 +30,129 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2.98"
-            android:scrollbars="vertical">
+            android:scrollbars="vertical"
+            android:background="@color/white">
 
-
-            <EditText
-                android:id="@+id/edit_content_editText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ems="15"
-                android:inputType="textMultiLine"
-                android:gravity="top"
-                android:linksClickable="true"
-                android:autoLink="web"
-                android:backgroundTint="@android:color/transparent"
-                android:hint="여기에는 작성된 글을 뿌려줄예정">
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:background="@color/white">
 
-                <requestFocus />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.15"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-            </EditText>
+                    <TextView
+                        android:id="@+id/edit_content_nicname"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|start"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/shb_medium_blur_gray"
+                        android:textSize="13sp"
+                        android:text="닉네임" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"/>
+
+                    <TextView
+                        android:id="@+id/edit_content_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="center_vertical|end"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/shb_medium_blur_gray"
+                        android:textSize="13sp"
+                        android:text="타임스탬프" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edit_content_title"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start"
+                    android:text="글 제목"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:focusable="false"
+                    android:textColor="@color/shb_deep_gray"
+                    android:background="@drawable/border" />
+
+                <EditText
+                    android:id="@+id/edit_content_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="15"
+                    android:gravity="top"
+                    android:linksClickable="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18sp"
+                    android:text="글 내용"
+                    android:focusable="false"
+                    android:textColor="@color/shb_deep_gray"
+                    android:backgroundTint="@android:color/transparent" />
+
+            </LinearLayout>
 
         </ScrollView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="0.02">
+            android:layout_weight="0.015">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="5"
+                android:background="@drawable/edittext_default_bg">
 
-                <TextView
+                <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4.8"/>
+                    android:layout_weight="2.5"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="삭제"
+                    android:textColor="@color/white"
+                    android:focusable="false"
+                    android:backgroundTint="@color/shb_button"
+                    android:onClick="deleteContent"/>
 
                 <Button
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:hint="삭제"
-                    android:layout_weight="0.1"
-                    android:layout_marginTop="3.5dp"
-                    android:layout_marginBottom="3.5dp"
-                    android:layout_marginRight="7dp"
-                    android:textColorHint="@color/white"
-                    android:backgroundTint="@color/google_plus_brand_color"/>
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:hint="수정"
-                    android:layout_weight="0.1"
-                    android:layout_marginTop="3.5dp"
-                    android:layout_marginBottom="3.5dp"
-                    android:layout_marginRight="7dp"
-                    android:textColorHint="@color/white"
-                    android:backgroundTint="@color/facebook_brand_color"/>
+                    android:layout_weight="2.5"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="수정"
+                    android:textColor="@color/white"
+                    android:focusable="false"
+                    android:backgroundTint="@color/shb_button"
+                    android:onClick="editContent"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
