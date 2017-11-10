@@ -63,7 +63,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
             view = convertView;
         }
         TextView text = (TextView)view.findViewById(R.id.listTitle);
-        text.setText("댓글");
+        text.setText("");
 
         return view;
     }

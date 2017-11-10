@@ -40,6 +40,7 @@ public class MyContentsActivity extends AppCompatActivity {
     String user_nicname;
     SharedPreferences user_nicname_pref;
     ItemAdapter itemAdpater = null;
+    String restful_ip;
 
     class Item {
         String item_id;
@@ -93,11 +94,14 @@ public class MyContentsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        SharedPreferences restful_ip_pref = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
+        restful_ip = restful_ip_pref.getString("restful_ip", "");
+
         user_nicname_pref = getSharedPreferences("user_nicname", Activity.MODE_PRIVATE);
         user_nicname = user_nicname_pref.getString("user_nicname", "");
 
         //Toast.makeText(MyContentsActivity.this, ""+user_nicname, Toast.LENGTH_SHORT).show();
-        new GetContents().execute("http://192.168.0.4:52275/contents/contentlist?nicname="+""+user_nicname);
+        new GetContents().execute(restful_ip+"/contents/contentlist?nicname="+""+user_nicname);
 
     }
 

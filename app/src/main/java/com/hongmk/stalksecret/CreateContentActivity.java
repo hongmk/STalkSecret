@@ -32,6 +32,7 @@ public class CreateContentActivity extends AppCompatActivity {
     private int board_id;
     private String user_id;
     private String user_nicname;
+    private String restful_ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,9 @@ public class CreateContentActivity extends AppCompatActivity {
 
         SharedPreferences user_nicname_pref = getSharedPreferences("user_nicname", Activity.MODE_PRIVATE);
         user_nicname = user_nicname_pref.getString("user_nicname", "");
+
+        SharedPreferences restful_ip_pref = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
+        restful_ip = restful_ip_pref.getString("restful_ip", "");
 
         //Toast.makeText(CreateContentActivity.this, ""+board_id+user_id+user_nicname, Toast.LENGTH_SHORT).show();
 
@@ -75,7 +79,7 @@ public class CreateContentActivity extends AppCompatActivity {
             Toast.makeText(CreateContentActivity.this, "글 내용을 입력해주세요", Toast.LENGTH_SHORT).show();
         } else {
 
-            new Login().execute("http://192.168.0.4:52275/contents",
+            new Login().execute(restful_ip+"/contents",
                     user_id,
                     user_nicname,
                     "" + board_id,

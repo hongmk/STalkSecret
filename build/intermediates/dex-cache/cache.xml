@@ -16,8 +16,17 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="cb008b9779778a11c676d268c1312e29d5d20d93">
+        sha1="4c6bd85e058d3904305e871bf05241631f5648df">
         <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f78ba903759e64f6b0dd2101802d35b38cc6b442\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\60029514\.android\build-cache\3ebb6811a6e3177239a15f35640d76024210dedb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="D:\Projects\STalkSecret\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b6aeb391909aab5572cee75f88e5bfd6d694f27e\classes.dex" />
     </item>
 
 </items>

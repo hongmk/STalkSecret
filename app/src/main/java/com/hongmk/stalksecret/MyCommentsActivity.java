@@ -40,7 +40,7 @@ public class MyCommentsActivity extends AppCompatActivity {
     ItemAdapter itemAdpater = null;
     String user_nicname;
     SharedPreferences user_nicname_pref;
-
+    String restful_ip;
 
     class Item {
         String item_id;
@@ -92,11 +92,14 @@ public class MyCommentsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        SharedPreferences restful_ip_pref = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
+        restful_ip = restful_ip_pref.getString("restful_ip", "");
+
         user_nicname_pref = getSharedPreferences("user_nicname", Activity.MODE_PRIVATE);
         user_nicname = user_nicname_pref.getString("user_nicname", "");
 
         //Toast.makeText(MyContentsActivity.this, ""+user_nicname, Toast.LENGTH_SHORT).show();
-        new GetComments().execute("http://192.168.0.4:52275/comments/commentlist?nicname="+""+user_nicname);
+        new GetComments().execute(restful_ip+"/comments/commentlist?nicname="+""+user_nicname);
     }
 
     @Override

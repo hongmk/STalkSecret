@@ -31,20 +31,12 @@ public class HomeActivity extends AppCompatActivity {
                 R.string.home_tab_2,
                 R.string.home_tab_3,
                 R.string.home_tab_4,
-                R.string.home_tab_5
-        };
-    }
-
-    public static int[] tab20() {
-        return new int[] {
                 R.string.home_tab_5,
-                R.string.home_tab_4,
-                R.string.home_tab_3,
-                R.string.home_tab_2,
-                R.string.home_tab_1
+                R.string.home_tab_6
 
         };
     }
+
 
     private Toolbar toolbar;
     private ViewPager viewPager;

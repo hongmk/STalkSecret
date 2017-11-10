@@ -1,5 +1,6 @@
 package com.hongmk.stalksecret;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,18 +27,21 @@ public class SigninActivity extends AppCompatActivity {
     private Intent intent;
     private EditText userIdText;
     private EditText passwordText;
+    private String restful_ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        SharedPreferences restful_ip_pref = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
+        restful_ip = restful_ip_pref.getString("restful_ip", "");
     }
 
     public void onLogin(View view){
         userIdText = (EditText) findViewById(R.id.signin_id);
         passwordText = (EditText) findViewById(R.id.signin_password);
 
-        new Login().execute("http://192.168.0.4:52275/users/login",
+        new Login().execute(restful_ip+"/users/login",
                 userIdText.getText().toString(),
                 passwordText.getText().toString());
     }

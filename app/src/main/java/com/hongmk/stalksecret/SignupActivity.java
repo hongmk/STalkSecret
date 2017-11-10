@@ -1,8 +1,10 @@
 package com.hongmk.stalksecret;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +40,8 @@ public class SignupActivity extends AppCompatActivity {
     private int password_verify;
     private int user_dept;
     private String phoneNumber ="";
+    private String restful_ip;
+
     Button compelete_button;
     EditText password ;
     EditText passwordRe;
@@ -59,6 +63,9 @@ public class SignupActivity extends AppCompatActivity {
 
         password.addTextChangedListener(new PasswordWatcher());
         passwordRe.addTextChangedListener(new PasswordWatcher());
+
+        SharedPreferences restful_ip_pref = getSharedPreferences("restful_ip", Activity.MODE_PRIVATE);
+        restful_ip = restful_ip_pref.getString("restful_ip", "");
 
 
     }
@@ -144,7 +151,7 @@ public class SignupActivity extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
-       new Verify().execute("http://192.168.0.4:52275/users/auth/officemail?officemail="+email.getText().toString()+"&phonenumber="+phoneNumber);
+       new Verify().execute(restful_ip+"/users/auth/officemail?officemail="+email.getText().toString()+"&phonenumber="+phoneNumber);
 
     }
 
@@ -152,7 +159,7 @@ public class SignupActivity extends AppCompatActivity {
         verify_g = 2;
         EditText user_id = (EditText) findViewById(R.id.signup_user_id);
         //아이디 중복확인 통신
-        new Verify().execute("http://192.168.0.4:52275/users/auth/user_id?user_id="+user_id.getText().toString());
+        new Verify().execute(restful_ip+"/users/auth/user_id?user_id="+user_id.getText().toString());
         //Toast.makeText(SignupActivity.this, "verifyUserId", Toast.LENGTH_SHORT).show();
     }
 
@@ -160,7 +167,7 @@ public class SignupActivity extends AppCompatActivity {
         verify_g = 3;
         EditText nicname = (EditText) findViewById(R.id.signup_nicname);
         //닉네임 중복확인 통신
-        new Verify().execute("http://192.168.0.4:52275/users/auth/nicname?nicname="+nicname.getText().toString());
+        new Verify().execute(restful_ip+"/users/auth/nicname?nicname="+nicname.getText().toString());
         //Toast.makeText(SignupActivity.this, "verifyNicname", Toast.LENGTH_SHORT).show();
     }
 
@@ -179,7 +186,7 @@ public class SignupActivity extends AppCompatActivity {
         if(password.getText().toString().equals(passwordRe.getText().toString()) != true) {
             Toast.makeText(SignupActivity.this, "첫번쨰 입력한 비밀번호가 두번쨰와 다릅니다. 다시확인해시기바랍니다.", Toast.LENGTH_SHORT).show();
         } else {
-            new Signup().execute("http://192.168.0.4:52275/users",
+            new Signup().execute(restful_ip+"/users",
                     user_id.getText().toString(),
                     nicname.getText().toString(),
                     password.getText().toString(),

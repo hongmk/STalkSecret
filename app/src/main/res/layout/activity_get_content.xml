@@ -56,8 +56,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical|start"
                         android:layout_marginLeft="10dp"
-                        android:textColor="@color/shb_blue_gray"
-                        android:textSize="18sp"
+                        android:textColor="@color/shb_medium_blur_gray"
+                        android:textSize="13sp"
                         android:text="닉네임" />
 
                     <TextView
@@ -72,7 +72,7 @@
                         android:layout_weight="1.5"
                         android:gravity="center_vertical|end"
                         android:layout_marginRight="10dp"
-                        android:textColor="@color/shb_blue_gray"
+                        android:textColor="@color/shb_medium_blur_gray"
                         android:textSize="13sp"
                         android:text="타임스탬프" />
 
@@ -112,20 +112,33 @@
 
         </ScrollView>
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5">
+            android:layout_height="200dp"
+            android:layout_weight="0.5"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/comment_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom"
+                android:text="댓글"
+                android:textColor="@color/shb_medium_blur_gray"
+                android:background="@color/transparent"
+                android:onClick="expandComment"/>
 
             <ExpandableListView
                 android:id="@+id/get_content_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:background="@drawable/edittext_default_bg">
+                android:background="@drawable/edittext_default_bg"
+                android:visibility="gone">
             </ExpandableListView>
 
-        </RelativeLayout>
+        </FrameLayout>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -141,6 +154,7 @@
                 android:background="@drawable/edittext_default_bg">
 
                 <EditText
+                    android:id="@+id/comment_text"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3.5"
@@ -159,7 +173,8 @@
                     android:layout_marginBottom="2dp"
                     android:text="댓글작성"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/shb_button"/>
+                    android:backgroundTint="@color/shb_button"
+                    android:onClick="createComment"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>

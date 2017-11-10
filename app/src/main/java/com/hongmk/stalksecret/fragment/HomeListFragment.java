@@ -1,6 +1,8 @@
 package com.hongmk.stalksecret.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,14 +14,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.hongmk.stalksecret.R;
 import com.hongmk.stalksecret.GetContentActivity;
+import com.hongmk.stalksecret.R;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 public class HomeListFragment extends Fragment {
 
     private WebView webview;
-    private static final String CONTENT_LIST_URL = "http://192.168.0.4:9000/#!/contents/list";
+    //private static final String CONTENT_LIST_URL = "http://192.168.0.4:9000/#!/contents/list";
+    String angular_ip;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,12 +31,15 @@ public class HomeListFragment extends Fragment {
 
         int position = FragmentPagerItem.getPosition(getArguments());
 
+        SharedPreferences restful_ip_pref = this.getActivity().getSharedPreferences("angular_ip", Activity.MODE_PRIVATE);
+        angular_ip = restful_ip_pref.getString("angular_ip", "");
+
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         //webview.setWebChromeClient(new WebBrowserClient());
         webview.setWebViewClient(new MyWebViewClient());
-        webview.loadUrl(CONTENT_LIST_URL + "?board_id="+ position);
+        webview.loadUrl(angular_ip+"/#!/contents/list" + "?board_id="+ position);
 
 
         //Toast.makeText(getActivity(),CONTENT_LIST_URL + "?board_id="+ position, Toast.LENGTH_SHORT).show();
