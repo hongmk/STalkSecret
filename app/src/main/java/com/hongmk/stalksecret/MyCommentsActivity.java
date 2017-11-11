@@ -81,6 +81,8 @@ public class MyCommentsActivity extends AppCompatActivity {
     }
 
     ArrayList<Item> itemList = new ArrayList<Item>();
+    ArrayList<Item> deleteItem = new ArrayList<Item>();
+
     class ItemAdapter extends ArrayAdapter {
         @NonNull
         @Override
@@ -281,7 +283,7 @@ public class MyCommentsActivity extends AppCompatActivity {
     class DeleteComment extends AsyncTask<String, String, String> {
         ProgressDialog dialog = new ProgressDialog(MyCommentsActivity.this);
         int objCnt =0;
-
+        int checkedCnt = 0;
         @Override
         protected String doInBackground(String... params) {
             StringBuilder output = new StringBuilder();
@@ -297,6 +299,8 @@ public class MyCommentsActivity extends AppCompatActivity {
                 if(isChecked == true){
                     item_id = itemList.get(i).getItemId();
                     item_content_id = itemList.get(i).getItemContentId();
+                    deleteItem.add(itemList.get(i));
+                    checkedCnt++;
                 }
 
                 try{
@@ -363,17 +367,7 @@ public class MyCommentsActivity extends AppCompatActivity {
                             "댓글 삭제 완료"+objCnt,
                             Toast.LENGTH_SHORT).show();
 
-                    for (int i = 0; i < objCnt; i++) {
-                        Boolean isChecked;
-                        isChecked = itemList.get(i).getCheck();
-                        if(isChecked == true){
-                            //itemList.get(i).setCheck(false);
-                            Toast.makeText(MyCommentsActivity.this, "remove"+itemList.get(i).getItemId(),Toast.LENGTH_SHORT).show();
-                            itemList.remove(i);
-
-                        }
-                        itemAdpater.notifyDataSetInvalidated();
-                    }
+                    itemList.removeAll(deleteItem);
                     itemAdpater.notifyDataSetInvalidated();
 
 
