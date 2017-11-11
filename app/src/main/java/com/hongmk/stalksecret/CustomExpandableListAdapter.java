@@ -81,8 +81,11 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView nicname = (TextView)view.findViewById(R.id.comment_child_nicname);
+        TextView date = (TextView)view.findViewById(R.id.comment_child_date);
         TextView comment = (TextView)view.findViewById(R.id.comment_child_text);
+
         nicname.setText(childItem.get(childPosition).item_nicname);
+        date.setText(childItem.get(childPosition).item_date);
         comment.setText(childItem.get(childPosition).item_text);
 
         return view;

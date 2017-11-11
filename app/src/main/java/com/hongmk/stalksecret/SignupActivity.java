@@ -88,14 +88,12 @@ public class SignupActivity extends AppCompatActivity {
                 // Checking editable.hashCode() to understand which edittext is using right now
              if (password.getText().hashCode() == editable.hashCode()){
                     if(password.getText().toString().equals(passwordRe.getText().toString()) != true) {
-                        password.setTextColor(getResources().getColor(R.color.darkred));
                         passwordRe.setTextColor(getResources().getColor(R.color.darkred));
                         password_verify = 0;
                         compelete_button.setEnabled(false);
                         compelete_button.setTextColor(getResources().getColor(R.color.hintColor));
                     } else {
-                        password.setTextColor(getResources().getColor(R.color.facebook_brand_color));
-                        passwordRe.setTextColor(getResources().getColor(R.color.facebook_brand_color));
+                        passwordRe.setTextColor(getResources().getColor(R.color.shb_button));
                         password_verify = 1;
                         if(email_verify ==1 && user_id_verify == 1 && nicname_verify == 1 && password_verify == 1) {
                             compelete_button.setEnabled(true);
@@ -105,14 +103,12 @@ public class SignupActivity extends AppCompatActivity {
              }
              else if (passwordRe.getText().hashCode() == editable.hashCode()){
                 if(passwordRe.getText().toString().equals(password.getText().toString()) != true) {
-                    password.setTextColor(getResources().getColor(R.color.darkred));
                     passwordRe.setTextColor(getResources().getColor(R.color.darkred));
                     password_verify = 0 ;
                     compelete_button.setEnabled(false);
                     compelete_button.setTextColor(getResources().getColor(R.color.hintColor));
                 } else {
-                    password.setTextColor(getResources().getColor(R.color.facebook_brand_color));
-                    passwordRe.setTextColor(getResources().getColor(R.color.facebook_brand_color));
+                    passwordRe.setTextColor(getResources().getColor(R.color.shb_button));
                     password_verify = 1;
                     if(email_verify ==1 && user_id_verify == 1 && nicname_verify == 1 && password_verify == 1) {
                         compelete_button.setEnabled(true);
@@ -141,16 +137,19 @@ public class SignupActivity extends AppCompatActivity {
         EditText email = (EditText) findViewById(R.id.signup_email);
         TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
+        phoneNumber= "01094441993";
         try {
+            Toast.makeText(SignupActivity.this, "phone"+telephony.getLine1Number(), Toast.LENGTH_SHORT).show();
             if (telephony.getLine1Number() != null) {
+
                 phoneNumber = telephony.getLine1Number();
                 phoneNumber = phoneNumber.replace("+82", "0");
             }
-            //Toast.makeText(SignupActivity.this, phoneNumber, Toast.LENGTH_SHORT).show();
-            //Log.i("[HP=]", phoneNumber);
+
         } catch(Exception e) {
             e.printStackTrace();
         }
+        Toast.makeText(SignupActivity.this, "phone"+phoneNumber, Toast.LENGTH_SHORT).show();
        new Verify().execute(restful_ip+"/users/auth/officemail?officemail="+email.getText().toString()+"&phonenumber="+phoneNumber);
 
     }

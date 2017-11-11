@@ -7,14 +7,31 @@
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp">
 
-    <TextView
-        android:id="@+id/comment_child_nicname"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/shb_button"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
-        android:paddingTop="5dp"
-        android:paddingBottom="10dp" />
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/comment_child_nicname"
+            android:layout_width="0dp"
+            android:layout_weight="1.2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/shb_button"
+            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:id="@+id/comment_child_date"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="match_parent"
+            android:textColor="@color/shb_light_gray"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/comment_child_text"

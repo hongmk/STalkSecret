@@ -262,16 +262,18 @@ public class GetContentActivity extends AppCompatActivity {
             try {
                 JSONArray jsonArray = new JSONArray(s);
                 if (jsonArray.length() > 0) {
-
+                    childItems.removeAll(childItems);
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject json = jsonArray.getJSONObject(i);
-
-                        childItems.add(new ChildItem(json.getString("nicname"), json.getString("comment")));
+                        String date = json.getString("create_date");
+                        date = date.replace("T", " ").replace(".000Z", "");
+                        childItems.add(new ChildItem(json.getString("nicname"), json.getString("comment"), date));
                     }
                     list = (ExpandableListView)findViewById(R.id.get_content_listview);
                     list.setAdapter(new CustomExpandableListAdapter(GetContentActivity.this, childItems));
-
-                } else {//인증실패
+                    list.setVisibility(View.INVISIBLE);
+                    comment_cnt.setVisibility(View.VISIBLE);
+                } else {//실패
 
                     Toast.makeText(GetContentActivity.this,
                             "댓글 목록이 없습니다.",
