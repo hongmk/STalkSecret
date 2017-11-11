@@ -77,6 +77,13 @@
 
                 </LinearLayout>
 
+                <View
+                    android:id="@+id/viewDummy"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+                
                 <EditText
                     android:id="@+id/edit_content_title"
                     android:layout_width="match_parent"
@@ -90,7 +97,6 @@
                     android:text="글 제목"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:focusable="false"
                     android:textColor="@color/shb_deep_gray"
                     android:background="@drawable/border" />
 
@@ -105,7 +111,6 @@
                     android:layout_marginLeft="10dp"
                     android:textSize="18sp"
                     android:text="글 내용"
-                    android:focusable="false"
                     android:textColor="@color/shb_deep_gray"
                     android:backgroundTint="@android:color/transparent" />
 

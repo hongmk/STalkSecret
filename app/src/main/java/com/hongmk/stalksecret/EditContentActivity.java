@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,8 @@ public class EditContentActivity extends AppCompatActivity {
     private String content_id;
     TextView nicnameText;
     TextView timeText;
-    TextView titleText;
-    TextView contentText;
+    EditText titleText;
+    EditText contentText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,8 @@ public class EditContentActivity extends AppCompatActivity {
 
         nicnameText = (TextView)findViewById(R.id.edit_content_nicname);
         timeText    = (TextView)findViewById(R.id.edit_content_time);
-        titleText   = (TextView)findViewById(R.id.edit_content_title);
-        contentText = (TextView)findViewById(R.id.edit_content_content);
+        titleText   = (EditText) findViewById(R.id.edit_content_title);
+        contentText = (EditText) findViewById(R.id.edit_content_content);
 
         new GetContent().execute(restful_ip+"/contents/content/"+content_id);
 
