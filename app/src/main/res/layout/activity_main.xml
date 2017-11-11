@@ -28,8 +28,8 @@
 
             <TextView
                 android:id="@+id/mainIcon"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/main_icon" />
@@ -58,7 +58,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="Open up your mind"
-                android:textColor="@color/white"
+                android:textColor="@color/cardview_light_background"
                 style="@style/MainSloganText" />
 
         </RelativeLayout>
