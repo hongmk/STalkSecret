@@ -139,7 +139,7 @@ public class SignupActivity extends AppCompatActivity {
 
         phoneNumber= "01094441993";
         try {
-            Toast.makeText(SignupActivity.this, "phone"+telephony.getLine1Number(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SignupActivity.this, "phone"+telephony.getLine1Number(), Toast.LENGTH_SHORT).show();
             if (telephony.getLine1Number() != null) {
 
                 phoneNumber = telephony.getLine1Number();
@@ -149,7 +149,7 @@ public class SignupActivity extends AppCompatActivity {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        Toast.makeText(SignupActivity.this, "phone"+phoneNumber, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SignupActivity.this, "phone"+phoneNumber, Toast.LENGTH_SHORT).show();
        new Verify().execute(restful_ip+"/users/auth/officemail?officemail="+email.getText().toString()+"&phonenumber="+phoneNumber);
 
     }
@@ -183,7 +183,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
         if(password.getText().toString().equals(passwordRe.getText().toString()) != true) {
-            Toast.makeText(SignupActivity.this, "첫번쨰 입력한 비밀번호가 두번쨰와 다릅니다. 다시확인해시기바랍니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignupActivity.this, "첫번째 입력한 비밀번호가 두번쨰와 다릅니다. 다시확인해시기바랍니다.", Toast.LENGTH_SHORT).show();
         } else {
             new Signup().execute(restful_ip+"/users",
                     user_id.getText().toString(),

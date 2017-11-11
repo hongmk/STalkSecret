@@ -114,7 +114,7 @@ public class MyCommentsActivity extends AppCompatActivity {
             comment_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    Toast.makeText(MyCommentsActivity.this,"isChecked"+isChecked,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MyCommentsActivity.this,"isChecked"+isChecked,Toast.LENGTH_SHORT).show();
                     item.checked = isChecked;
                 }
             });
@@ -155,7 +155,7 @@ public class MyCommentsActivity extends AppCompatActivity {
 
     public void checkAll(View view){
         listView = (ListView)findViewById(R.id.cmListView);
-        Toast.makeText(MyCommentsActivity.this, "checkAll"+ listView.getAdapter().getCount(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MyCommentsActivity.this, "checkAll"+ listView.getAdapter().getCount(),Toast.LENGTH_SHORT).show();
         for (int i = 0; i < listView.getAdapter().getCount(); i++) {
             itemList.get(i).setCheck(true);
         }
@@ -164,7 +164,7 @@ public class MyCommentsActivity extends AppCompatActivity {
 
     public void unCheckAll(View view){
         listView = (ListView)findViewById(R.id.cmListView);
-        Toast.makeText(MyCommentsActivity.this, "uncheckAll"+listView.getAdapter().getCount() ,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MyCommentsActivity.this, "uncheckAll"+listView.getAdapter().getCount() ,Toast.LENGTH_SHORT).show();
         for (int i = 0; i < listView.getAdapter().getCount(); i++) {
             itemList.get(i).setCheck(false);
         }
@@ -364,14 +364,14 @@ public class MyCommentsActivity extends AppCompatActivity {
                 JSONObject json = new JSONObject(s);
                 if (json.getBoolean("result") == true) {//성공
                     Toast.makeText(MyCommentsActivity.this,
-                            "댓글 삭제 완료"+objCnt,
+                            "댓글 삭제 완료",
                             Toast.LENGTH_SHORT).show();
 
                     itemList.removeAll(deleteItem);
                     itemAdpater.notifyDataSetInvalidated();
 
 
-                } else {//로그인 실패
+                } else {// 실패
                     Toast.makeText(MyCommentsActivity.this,
                             "댓글 삭제 중 오류발생. 다시시도해주세요.",
                             Toast.LENGTH_SHORT).show();

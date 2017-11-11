@@ -110,7 +110,7 @@ public class MyContentsActivity extends AppCompatActivity {
             content_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    Toast.makeText(MyContentsActivity.this,"isChecked"+isChecked,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MyContentsActivity.this,"isChecked"+isChecked,Toast.LENGTH_SHORT).show();
                     item.checked = isChecked;
                 }
             });
@@ -154,7 +154,7 @@ public class MyContentsActivity extends AppCompatActivity {
 
     public void checkAll(View view){
         listView = (ListView)findViewById(R.id.myContents_listView);
-        Toast.makeText(MyContentsActivity.this, "checkAll"+ listView.getAdapter().getCount(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MyContentsActivity.this, "checkAll"+ listView.getAdapter().getCount(),Toast.LENGTH_SHORT).show();
         for (int i = 0; i < listView.getAdapter().getCount(); i++) {
             itemList.get(i).setCheck(true);
         }
@@ -163,7 +163,7 @@ public class MyContentsActivity extends AppCompatActivity {
 
     public void unCheckAll(View view){
         listView = (ListView)findViewById(R.id.myContents_listView);
-        Toast.makeText(MyContentsActivity.this, "uncheckAll"+listView.getAdapter().getCount() ,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MyContentsActivity.this, "uncheckAll"+listView.getAdapter().getCount() ,Toast.LENGTH_SHORT).show();
         for (int i = 0; i < listView.getAdapter().getCount(); i++) {
             itemList.get(i).setCheck(false);
         }
@@ -363,7 +363,7 @@ public class MyContentsActivity extends AppCompatActivity {
                 JSONObject json = new JSONObject(s);
                 if (json.getBoolean("result") == true) {//성공
                     Toast.makeText(MyContentsActivity.this,
-                            "글 삭제 완료"+objCnt,
+                            "글 삭제 완료",
                             Toast.LENGTH_SHORT).show();
 
                     itemList.removeAll(deleteItem);

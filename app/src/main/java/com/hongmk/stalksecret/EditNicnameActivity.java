@@ -281,7 +281,7 @@ public class EditNicnameActivity extends AppCompatActivity {
 
                     nicname.setText(newNicname.getText().toString());
 
-                } else {//회원가입 실패
+                } else {//닉네임변경 실패
                     Toast.makeText(EditNicnameActivity.this,
                             "닉네임변경 중 오류발생. 잠시 후 다시 변경해주세요.",
                             Toast.LENGTH_SHORT).show();
